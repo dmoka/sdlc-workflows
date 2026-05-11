@@ -1,0 +1,49 @@
+---
+title: Reflexion — Generator / Critic loop
+tagline: A generator writes; a critic reviews; loop until the critic approves or the budget runs out.
+attribution: Shinn et al.
+tier: universal
+canonical_url: https://blog.langchain.com/reflection-agents/
+when_to_use: Quality matters more than latency — content, specs, security-sensitive code.
+when_not_to_use: Real-time UX where wall-clock time per request is the constraint.
+tags: [reflection, self-critique, two-agent, loop]
+sources:
+  - title: Reflection Agents (LangChain blog)
+    author: LangChain
+    url: https://blog.langchain.com/reflection-agents/
+    year: 2024
+  - title: Reflection (AutoGen design pattern)
+    author: Microsoft
+    url: https://microsoft.github.io/autogen/stable//user-guide/core-user-guide/design-patterns/reflection.html
+    year: 2025
+  - title: Anthropic Cookbook — evaluator_optimizer.ipynb
+    author: Anthropic
+    url: https://github.com/anthropics/anthropic-cookbook/blob/main/patterns/agents/evaluator_optimizer.ipynb
+    year: 2024
+related:
+  patterns: [reflexion-self-critique-loop, evaluator-optimizer, writer-reviewer-two-session]
+  antiPatterns: [reflexion-blind-spot-loop, correction-spiral]
+  practices: [graders-resistant-to-hacking, small-sample-evals-first]
+  glossary: [reflexion, agentic-loop]
+  workflows: [evaluator-optimizer-loop, tdd-red-green-refactor-skills]
+---
+
+Two agents in a tight loop. A **generator** drafts the work; a **critic** reviews against a rubric and either approves or returns specific revisions. Productized in 2025 by AutoGen, LangGraph, and the Anthropic Cookbook after Shinn et al.'s 2023 paper.
+
+The pseudocode is short:
+
+```python
+draft = generator(task)
+for _ in range(MAX_ITERATIONS):
+    critique = critic(draft, rubric)
+    if critique.approved:
+        break
+    draft = generator.revise(draft, critique)
+return draft
+```
+
+The technique works because the critic's role is *narrow* — it evaluates against a written rubric, not against vague preferences. That structure prevents the loop from sliding into infinite "looks good now / wait actually" oscillations.
+
+**Use for** quality-critical work: spec drafts, security-sensitive code, content destined for users. The original Reflexion paper reported a lift of GPT-4 HumanEval pass-rate from 80% to 91%.
+
+**Avoid for** latency-critical paths. Each iteration is a model call; budgets compound fast.

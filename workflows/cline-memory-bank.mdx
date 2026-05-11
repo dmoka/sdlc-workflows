@@ -1,0 +1,33 @@
+---
+title: Cline Memory Bank
+tagline: Curated set of memory-bank/*.md files the agent reads at every session start — projectbrief, productContext, activeContext, systemPatterns, techContext.
+attribution: nickbaumann98 / Cline community
+tier: tool-specific
+canonical_url: https://docs.cline.bot/features/memory-bank
+upstream:
+  repo: nickbaumann98/cline_docs
+  ref: main
+  paths: []
+setup_command: |
+  # Custom instruction prepended to every Cline session:
+  Before any work, read every file under `memory-bank/`.
+  If missing, create them by interviewing me.
+when_to_use: Long-lived projects with stable context that's painful to re-explain every session.
+when_not_to_use: One-off scripts or short investigations — memory-bank overhead doesn't pay back.
+tags: [cline, memory-bank, context, custom-instructions]
+sources:
+  - title: Memory Bank (Cline docs)
+    author: Cline
+    url: https://docs.cline.bot/features/memory-bank
+    year: 2025
+  - title: nickbaumann98/cline_docs
+    author: nickbaumann98
+    url: https://github.com/nickbaumann98/cline_docs
+    year: 2025
+related:
+  patterns: [structured-note-taking-external-memory, context-window-auto-compaction]
+  practices: [external-memory-layer, beads-external-memory-for-cross-session-continuity, write-lean-claude-md-agents-md]
+  glossary: [claude-md-agents-md]
+  tools: [cline]
+  workflows: [agents-md]
+---

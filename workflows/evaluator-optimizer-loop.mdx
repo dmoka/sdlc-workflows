@@ -1,0 +1,43 @@
+---
+title: Evaluator-Optimizer loop
+tagline: Generator writes code; an automated evaluator (tests, lint, types) returns specific failures; loop until green.
+attribution: Anthropic (Building Effective Agents)
+tier: universal
+canonical_url: https://www.anthropic.com/research/building-effective-agents
+when_to_use: Anything with a machine-checkable pass/fail signal — build until green, lint until clean, perf budget met.
+when_not_to_use: Tasks without a deterministic check (open-ended prose, design decisions).
+tags: [primitive, anthropic, loop, tests-as-evaluator]
+sources:
+  - title: Building Effective Agents
+    author: Anthropic
+    url: https://www.anthropic.com/research/building-effective-agents
+    year: 2024
+  - title: Evaluator-Optimizer (Anthropic Cookbook)
+    author: Anthropic
+    url: https://github.com/anthropics/anthropic-cookbook/blob/main/patterns/agents/evaluator_optimizer.ipynb
+    year: 2024
+related:
+  patterns: [evaluator-optimizer, reflexion-self-critique-loop, llm-as-judge-eval]
+  antiPatterns: [self-validating-tests, test-overfitting-test-cheating]
+  practices: [verify-everything, graders-resistant-to-hacking]
+  glossary: [agentic-loop]
+  workflows: [reflexion-loop, tdd-red-green-refactor-skills, ralph-wiggum-loop]
+---
+
+The simplest workflow primitive that actually closes a loop. An **optimizer** writes code against a spec; an **evaluator** runs an automated check (tests, type-checker, lint, perf budget) and returns specific failures; the optimizer revises. Repeat until green or until the iteration budget runs out.
+
+```text
+while iteration < MAX:
+    code  = optimizer.run(spec, prev_feedback)
+    score = evaluator.run(code)        # pytest / tsc / ruff / bench
+    if score.passed: break
+    prev_feedback = score.failures
+```
+
+The technique's strength is that the evaluator is **deterministic and machine-checkable**. No LLM judges code quality; tests do.
+
+**Use for** anything with a real pass/fail signal: build-until-green TDD, lint-until-clean refactors, "make this benchmark beat 100ms." A tight feedback loop with concrete failure messages is the cleanest agent contract in this catalog.
+
+**Avoid for** open-ended generation where there's no machine-checkable correctness signal. Use Reflexion-style critic loops there instead.
+
+**Pitfall:** the evaluator can be reward-hacked — an agent will sometimes "fix" a failing test by editing the test rather than the code. Pin tests as immutable in the optimizer's permissions, or run a final review pass before merge.

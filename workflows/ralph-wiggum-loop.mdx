@@ -1,0 +1,52 @@
+---
+title: Ralph Wiggum Loop
+tagline: A coding agent in a bash loop, fed the same PROMPT.md until the project builds itself.
+attribution: Geoffrey Huntley
+tier: multi-file
+canonical_url: https://ghuntley.com/ralph/
+upstream:
+  repo: ghuntley/how-to-ralph-wiggum
+  ref: main
+  paths: []
+when_to_use: Greenfield projects, prototypes, MVPs.
+when_not_to_use: Existing or legacy codebases.
+tags: [loop, single-agent, bash, claude-code]
+sources:
+  - title: How to Ralph Wiggum
+    author: Geoffrey Huntley
+    url: https://ghuntley.com/ralph/
+    year: 2025
+  - title: how-to-ralph-wiggum (GitHub)
+    author: Geoffrey Huntley
+    url: https://github.com/ghuntley/how-to-ralph-wiggum
+    year: 2025
+related:
+  patterns: [ralph-wiggum-loop, reflexion-self-critique-loop, evaluator-optimizer]
+  antiPatterns: [autonomous-loop-runaway, yolo-mode-in-production, house-of-cards-code]
+  practices: [sandbox-for-autonomous-runs, auto-mode-for-tight-loops, stateful-resume-from-checkpoint]
+  glossary: [ralph-wiggum-loop, agentic-loop, yolo-mode]
+  tools: [claude-code, amp, aider]
+  workflows: [anthropic-ralph-plugin, jr-structured-ralph, antfarm]
+---
+
+A coding agent in a bash loop, fed the same `PROMPT.md` until the project builds itself. Coined by Geoffrey Huntley in July 2025 and widely adopted across Claude Code, Codex, and Amp.
+
+The mechanism is the simplest possible:
+
+```bash
+while :; do cat PROMPT.md | claude -p --dangerously-skip-permissions ; done
+```
+
+Three files do the work:
+
+- `PROMPT.md` — the only instruction the agent reads
+- `AGENTS.md` — operational guide kept under 60 lines
+- `IMPLEMENTATION_PLAN.md` — task list the agent updates each iteration
+
+State lives on disk. The loop has no memory of prior runs; the agent rediscovers context every cycle from the files. That structure is the source of Ralph's strength (deterministic, restartable) and its limit (no awareness of code that already exists).
+
+**Use for** greenfield projects, prototypes, MVPs.
+
+**Avoid in** legacy codebases — Huntley flatly: "There's no way in heck I would use Ralph in an existing code base."
+
+Anthropic shipped an official `/ralph-loop` plugin in December 2025 that replaces the bash wrapper with a Stop-hook and a `--completion-promise` sentinel.

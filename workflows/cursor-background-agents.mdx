@@ -1,0 +1,32 @@
+---
+title: Cursor Background Agents
+tagline: Spawn agents in a remote Ubuntu VM that clones the repo, makes changes, opens a PR, and pings you.
+attribution: Cursor
+tier: tool-specific
+canonical_url: https://docs.cursor.com/en/background-agent
+setup_command: |
+  # In Cursor:
+  # 1. Open the command palette
+  # 2. "Run agent in background"
+  # 3. Describe the task
+  # 4. Review the resulting PR
+
+  # Or assign a Linear issue to Cursor (Aug 2025+ integration).
+when_to_use: Codebase-wide chores (typos, doc updates, small refactors), accessibility passes, predictable bug fixes.
+when_not_to_use: Tasks requiring live debugging or step-by-step user input — you only see the final PR.
+tags: [cursor, background-agent, vm, async]
+sources:
+  - title: Cursor — Background Agent
+    author: Cursor
+    url: https://docs.cursor.com/en/background-agent
+    year: 2025
+  - title: Cursor Background Agents (Steve Kinney course)
+    author: Steve Kinney
+    url: https://stevekinney.com/courses/ai-development/cursor-background-agents
+    year: 2025
+related:
+  antiPatterns: [cookie-clicker-mode-passive-supervision]
+  practices: [sandbox-for-autonomous-runs, non-interactive-mode-for-ci]
+  tools: [cursor]
+  workflows: [codex-cloud, devin, claude-code-github-action]
+---

@@ -1,0 +1,32 @@
+---
+title: OpenAI Codex Cloud
+tagline: Multiple concurrent Codex agents in isolated git worktrees in OpenAI's cloud, internet-disabled by default, built into the ChatGPT sidebar.
+attribution: OpenAI
+tier: tool-specific
+canonical_url: https://developers.openai.com/codex/cloud
+setup_command: |
+  # In ChatGPT (Plus / Pro / Team):
+  # 1. Open the Codex sidebar
+  # 2. Pick a repo
+  # 3. Describe the task — "Code" to implement, "Ask" to investigate
+  # 4. Multiple agents can work the same repo in parallel
+when_to_use: Cookie-cutter tasks you can describe once and check the PR for; long parallel runs where you don't want to babysit.
+when_not_to_use: Tasks that need internet access (e.g. fetching live data) — Codex Cloud is deliberately air-gapped.
+tags: [openai, codex, cloud, async, worktree]
+sources:
+  - title: Codex Cloud (OpenAI Developers)
+    author: OpenAI
+    url: https://developers.openai.com/codex/cloud
+    year: 2025
+  - title: Introducing Codex
+    author: OpenAI
+    url: https://openai.com/index/introducing-codex/
+    year: 2025
+related:
+  patterns: [worktree-fanout]
+  antiPatterns: [cookie-clicker-mode-passive-supervision, yolo-mode-in-production]
+  practices: [parallel-sessions-in-worktrees, sandbox-for-autonomous-runs]
+  glossary: [worktree-pattern]
+  tools: [codex-cli]
+  workflows: [cursor-background-agents, devin]
+---

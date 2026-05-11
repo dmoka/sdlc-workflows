@@ -1,0 +1,44 @@
+---
+title: QuantumBlack Two-Layer SDLC
+tagline: Deterministic rule-based orchestrator at the top + bounded specialist agents inside each phase. The model never decides phase transitions.
+attribution: Daniel Sheard (McKinsey QuantumBlack)
+tier: concept
+canonical_url: https://medium.com/quantumblack/agentic-workflows-for-software-development-dc8e64f4a79d
+when_to_use: Production work in regulated or high-stakes settings where phase transitions must be predictable and auditable.
+when_not_to_use: Exploratory work where you want the model to decide what to do next.
+tags: [quantumblack, mckinsey, two-layer, bounded-agents, governance]
+sources:
+  - title: Agentic Workflows for Software Development
+    author: Daniel Sheard (QuantumBlack)
+    url: https://medium.com/quantumblack/agentic-workflows-for-software-development-dc8e64f4a79d
+    year: 2026
+related:
+  patterns: [orchestrator-workers, plan-execute-verify-commit]
+  glossary: [agent-fleet-agent-cluster]
+  workflows: [venutian-antfarm, microsoft-ai-led-sdlc, ac-dc-cycle]
+---
+
+A deliberate two-layer split published by Daniel Sheard at McKinsey QuantumBlack in February 2026. The top layer — a **deterministic rule-based orchestrator** — has no LLM decision-making at all on phase transitions. The bottom layer — **bounded specialist agents** — only acts inside whichever phase the orchestrator is currently in.
+
+Five named agents sit in the bottom layer:
+
+- **Requirements** — break down features into testable units
+- **Architecture** — design and tradeoff choices
+- **Coding** — implementation
+- **Critic** — validation, judgment calls, escalation
+- **Knowledge** — context queries, assumption tracking
+
+The on-disk shape is the spec:
+
+```
+.sdlc/
+├── context/      # codebase + standards loaded into the Guide step
+├── specs/        # requirements + architecture + tasks
+└── knowledge/    # tracked assumptions, decisions, open questions
+```
+
+Reusable instructions live as **`SKILL.md` files** that encode domain expertise as machine-readable workflow specs. The folder structure itself is the spec.
+
+**Use for** production work in regulated or high-stakes settings where phase transitions must be predictable and auditable. QuantumBlack sits at the **opposite pole from Ralph** on the autonomy axis — Ralph trusts the model with everything; QuantumBlack only trusts it inside tight phase walls.
+
+**Avoid for** exploratory work or small teams. The orchestrator scaffolding pays off only when audit trails and bounded agent behavior are hard requirements.

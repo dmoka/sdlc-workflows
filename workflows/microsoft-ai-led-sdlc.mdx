@@ -1,0 +1,38 @@
+---
+title: Microsoft AI-led SDLC
+tagline: End-to-end agentic pipeline glued together with GitHub Agentic Workflows on the front and Azure AI Foundry for complex orchestration on the back.
+attribution: Microsoft
+tier: concept
+canonical_url: https://techcommunity.microsoft.com/blog/appsonazureblog/an-ai-led-sdlc-building-an-end-to-end-agentic-software-development-lifecycle-wit/4491896
+when_to_use: Azure-committed enterprises that want a vendor-supported pipeline rather than a hand-rolled loop.
+when_not_to_use: Outside the Azure ecosystem — the integration story is the whole pitch.
+tags: [microsoft, azure, github, vendor-architecture, enterprise]
+sources:
+  - title: An AI-led SDLC — building an end-to-end agentic software development lifecycle
+    author: Microsoft
+    url: https://techcommunity.microsoft.com/blog/appsonazureblog/an-ai-led-sdlc-building-an-end-to-end-agentic-software-development-lifecycle-wit/4491896
+    year: 2026
+  - title: Microsoft Agent Framework
+    author: Microsoft
+    url: https://github.com/microsoft/agent-framework
+    year: 2025
+related:
+  patterns: [orchestrator-workers, plan-execute-verify-commit]
+  tools: [github-copilot-coding-agent]
+  workflows: [orchestrator-workers, ac-dc-cycle, quantumblack-two-layer-sdlc]
+---
+
+A vendor reference architecture published by Microsoft in February 2026 describing an end-to-end agentic SDLC stitched together from GitHub Copilot async agents on the front and Azure AI Foundry on the back. The shape is essentially **Orchestrator-Workers wearing Microsoft branding** — but for Azure-committed teams, the vendor support story is the actual differentiator.
+
+The pipeline names four agents along the SDLC:
+
+- **Planning Agent** — natural-language requirements turn into structured tickets
+- **Coding Agent** — GitHub Copilot's async coding agent picks up a ticket, opens a PR
+- **Quality Agent** — review, security scan, test coverage check
+- **SRE / Deployment Agent** — proactive monitoring, automated rollback on regression
+
+Human-in-the-loop gates sit between each pair. The glue is **GitHub Agentic Workflows** (natural-language workflow definitions on the GitHub side) and **Azure AI Foundry** (orchestration runtime for complex multi-step flows on the Azure side).
+
+**Use for** Azure-committed enterprises that want vendor-blessed reference shapes rather than hand-rolling something. The named-agent pipeline is generic enough to translate to other stacks, but the value here is the integration story — Foundry, GitHub Actions, Copilot all wired together.
+
+**Avoid for** small teams or non-Azure stacks. The orchestration cost only makes sense at the scale where you already have an Azure footprint and a platform team.

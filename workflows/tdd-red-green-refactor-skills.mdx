@@ -1,0 +1,30 @@
+---
+title: TDD as Skills — Red / Green / Refactor
+tagline: Three sub-agents (Red writes failing test, Green writes minimum code, Refactor cleans up) hand off in a strict cycle.
+attribution: Matt Pocock
+tier: multi-file
+canonical_url: https://github.com/mattpocock/skills
+upstream:
+  repo: mattpocock/skills
+  ref: main
+  paths:
+    - README.md
+when_to_use: Backend, libraries, anything where tests can drive design.
+when_not_to_use: UI work where visual correctness isn't expressible as a unit test.
+tags: [tdd, skills, subagents, red-green-refactor]
+sources:
+  - title: mattpocock/skills
+    author: Matt Pocock
+    url: https://github.com/mattpocock/skills
+    year: 2025
+  - title: Red / Green TDD (Simon Willison's Agentic Engineering Patterns)
+    author: Simon Willison
+    url: https://simonwillison.net/guides/agentic-engineering-patterns/red-green-tdd/
+    year: 2025
+related:
+  patterns: [red-green-tdd-with-agent, tdd-with-verifier-guard, evaluator-optimizer]
+  antiPatterns: [self-validating-tests, test-overfitting-test-cheating, premature-victory-declaration]
+  practices: [verify-everything, small-sample-evals-first]
+  glossary: [subagent, agent-harness]
+  workflows: [evaluator-optimizer-loop, piv-loop]
+---

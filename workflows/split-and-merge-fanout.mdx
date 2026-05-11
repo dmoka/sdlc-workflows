@@ -1,0 +1,35 @@
+---
+title: Split-and-merge fan-out (Claude Code subagents)
+tagline: Parent agent issues N parallel Task tool calls in a single message; each subagent gets a fresh context; results merge.
+attribution: Anthropic
+tier: tool-specific
+canonical_url: https://docs.claude.com/en/docs/claude-code/sub-agents
+upstream:
+  repo: anthropics/claude-code
+  ref: main
+  paths: []
+setup_command: |
+  # Inside Claude Code, single message to the parent agent:
+  Spawn one subagent per file in src/api/*.ts. Each subagent's only job:
+  return a JSON report { file, issues:[], suggestions:[] }.
+  After all reports return, synthesize a single prioritized fix list.
+when_to_use: File-by-file or concern-by-concern work where each chunk fits in a fresh context window.
+when_not_to_use: Sequential dependencies between subtasks — fan-out can't pass information sideways between siblings.
+tags: [claude-code, subagents, fanout, multi-agent]
+sources:
+  - title: Sub-agents (Claude Code docs)
+    author: Anthropic
+    url: https://docs.claude.com/en/docs/claude-code/sub-agents
+    year: 2025
+  - title: Code Agent Orchestra
+    author: Addy Osmani
+    url: https://addyosmani.com/blog/code-agent-orchestra/
+    year: 2025
+related:
+  patterns: [sub-agent-fanout-for-investigation, parallelization-sectioning-voting, orchestrator-workers]
+  antiPatterns: [subagent-over-spawn]
+  practices: [use-subagents-for-investigation, fan-out-across-files]
+  glossary: [subagent, agent-fleet-agent-cluster]
+  tools: [claude-code, claude-agent-sdk]
+  workflows: [orchestrator-workers, jr-structured-ralph]
+---

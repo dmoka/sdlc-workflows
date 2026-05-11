@@ -1,0 +1,39 @@
+---
+title: Venutian Antfarm
+tagline: 13 agents in two tiers — seven executives owning policy, six operational specialists shipping code.
+attribution: Robert Dunie
+tier: concept
+canonical_url: https://github.com/rdunie/venutian-antfarm
+upstream:
+  repo: rdunie/venutian-antfarm
+  ref: main
+  paths: []
+when_to_use: Regulated environments where audit trail and policy separation matter more than speed.
+when_not_to_use: Hackathons or prototypes.
+tags: [multi-agent, governance, sdlc, agpl]
+sources:
+  - title: rdunie/venutian-antfarm
+    author: Robert Dunie
+    url: https://github.com/rdunie/venutian-antfarm
+    year: 2026
+  - title: Governing the Ant Farm (Towards AI)
+    author: Robert Dunie
+    url: https://pub.towardsai.net/governing-the-ant-farm-a-governance-first-framework-for-multi-agent-software-delivery-29245fc14bd9
+    year: 2026
+related:
+  patterns: [orchestrator-workers, plan-execute-verify-commit]
+  glossary: [agent-fleet-agent-cluster]
+  workflows: [antfarm, quantumblack-two-layer-sdlc, microsoft-ai-led-sdlc]
+---
+
+A multi-agent SDLC framework with governance baked in: 13 agents split across two tiers — seven executives that own policy and six operational specialists that ship code. Released by Robert Dunie under AGPL-3.0; v0.4.2 shipped March 28 2026.
+
+The operational core is a Leadership Triad: a Product Owner agent for prioritization, a Solution Architect agent for technical context, and a Scrum Master agent that paces the flow. Together they drive a nine-step lifecycle for every work item — groom, promote, build, review, fix, deploy, accept, retro, checkpoint — with compliance gates between stages.
+
+The executive tier (CRO, CISO, CEO, CTO, CFO, COO, CKO) sits above operations and writes the rules. Operational agents act within them and can't override.
+
+Agents earn autonomy on a four-rung ladder. **Crawl** proposes every action. **Walk** runs the standard playbook. **Run** has expanded latitude. **Fly** acts freely. A drop in delivery quality pushes an agent back down the ladder.
+
+**Use in** regulated environments where audit trail, policy separation, and progressive trust matter more than throughput.
+
+**Avoid in** prototypes and hackathons — the governance overhead is the whole point and only pays off when compliance is the constraint.

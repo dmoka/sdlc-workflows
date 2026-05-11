@@ -1,0 +1,26 @@
+---
+title: Devin — Long-running session agent
+tagline: End-to-end autonomous SDE in a cloud VM with browser, shell, and editor; one chat-style session runs hours-to-days unattended.
+attribution: Cognition Labs
+tier: tool-specific
+canonical_url: https://devin.ai/
+setup_command: |
+  # In the Devin web UI or Slack integration:
+  # State the goal once, in a single prompt:
+  "Build feature X end-to-end — branch, code, tests, PR.
+   Ping me on red CI or blocker."
+  # Walk away. Review the resulting PR.
+when_to_use: Long async work where you'd otherwise context-switch repeatedly — predictable bug fixes, dependency upgrades, well-specified features.
+when_not_to_use: Tasks that require live debugging or per-step human judgment — Devin runs opaque mid-session.
+tags: [devin, cognition, async, session-agent]
+sources:
+  - title: Devin (Cognition Labs)
+    author: Cognition Labs
+    url: https://devin.ai/
+    year: 2024
+related:
+  antiPatterns: [cookie-clicker-mode-passive-supervision, yolo-mode-in-production]
+  practices: [sandbox-for-autonomous-runs, human-in-loop-checkpoints]
+  tools: [devin]
+  workflows: [cursor-background-agents, codex-cloud]
+---

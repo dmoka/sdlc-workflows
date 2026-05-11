@@ -1,0 +1,38 @@
+---
+title: CrewAI — Sequential / Hierarchical
+tagline: Three pre-defined process shapes — linear pipeline, manager-led delegation, planned consensual.
+attribution: CrewAI
+tier: tool-specific
+canonical_url: https://docs.crewai.com/en/learn/sequential-process
+upstream:
+  repo: crewAIInc/crewAI
+  ref: main
+  paths: []
+setup_command: |
+  pip install crewai
+
+  # Python:
+  from crewai import Crew, Process
+  crew = Crew(
+      agents=[planner, coder, reviewer],
+      process=Process.hierarchical,
+      manager_llm="claude-sonnet-4-6",
+  )
+when_to_use: Sequential — pipeline-style data flow. Hierarchical — dynamic delegation with validation.
+when_not_to_use: Latency-critical paths — crew overhead is high vs raw single-agent calls.
+tags: [crewai, multi-agent, python, role-based]
+sources:
+  - title: Sequential Process (CrewAI docs)
+    author: CrewAI
+    url: https://docs.crewai.com/en/learn/sequential-process
+    year: 2025
+  - title: Hierarchical Process (CrewAI docs)
+    author: CrewAI
+    url: https://docs.crewai.com/how-to/Hierarchical/
+    year: 2025
+related:
+  patterns: [orchestrator-workers, routing, prompt-chaining]
+  glossary: [agent-fleet-agent-cluster]
+  tools: [crewai]
+  workflows: [openai-handoffs, langgraph-supervisor, autogen-group-chat]
+---

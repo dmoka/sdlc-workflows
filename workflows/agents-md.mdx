@@ -1,0 +1,41 @@
+---
+title: AGENTS.md — README for agents
+tagline: Plain-Markdown README that agents read first. Co-released by Google, OpenAI, Factory, Sourcegraph, Cursor; now stewarded by the Agentic AI Foundation.
+attribution: Multi-vendor consortium
+tier: universal
+canonical_url: https://agents.md/
+when_to_use: Any repo more than one agent will touch. AGENTS.md hierarchy (per-package overrides + nearest-wins resolution) lets large repos guide agents at every level.
+when_not_to_use: Single-file scripts where one CLAUDE.md or system prompt covers everything.
+tags: [standard, agents-md, memory, context]
+sources:
+  - title: AGENTS.md
+    author: Agentic AI Foundation
+    url: https://agents.md/
+    year: 2025
+  - title: AGENTS.md (Codex docs)
+    author: OpenAI
+    url: https://developers.openai.com/codex/guides/agents-md
+    year: 2025
+related:
+  patterns: [structured-note-taking-external-memory, context-window-auto-compaction]
+  antiPatterns: [bloated-claude-md, excessive-memory-accumulation, the-kitchen-sink-session]
+  practices: [write-lean-claude-md-agents-md, skills-skill-md-over-claude-md-bloat, external-memory-layer]
+  glossary: [claude-md-agents-md, context-engineering]
+  workflows: [cline-memory-bank]
+---
+
+A Markdown file at the repo root (uppercase filename — `AGENTS.md`) that agents read before doing anything else. Co-released in 2025 by Google, OpenAI, Factory, Sourcegraph, and Cursor as a vendor-neutral standard, now stewarded by the Linux Foundation's Agentic AI Foundation.
+
+The standard sections most teams ship are short:
+
+- **Build & Test** — the exact commands to run; no narrative
+- **Architecture Overview** — one paragraph; one diagram if needed
+- **Security** — what's sensitive; what the agent must not touch
+- **Git Workflows** — branch naming, commit format, PR rules
+- **Conventions & Patterns** — the small set of in-repo idioms
+
+Critically, agents resolve AGENTS.md **nearest-wins**: per-package overrides at `packages/foo/AGENTS.md` take precedence over the repo-root one for work inside `packages/foo`. That's the part most adopters miss — it lets large monorepos guide agents at every level instead of forcing one giant root file.
+
+**Use for** any repo more than one agent will touch. The cost is one file; the payoff is every agent in every tool starts from the same context.
+
+**Avoid for** single-file scripts where one inline system prompt covers everything. AGENTS.md is overkill below a certain repo size.
