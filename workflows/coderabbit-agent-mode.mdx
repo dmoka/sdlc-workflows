@@ -4,7 +4,22 @@ tagline: Multi-agent PR pipeline — one writes, one critiques, one tests, one v
 attribution: CodeRabbit
 tier: tool-specific
 canonical_url: https://docs.coderabbit.ai/
-when_to_use: As the canonical example of "review agent in front of every merge" — works as a checked-in CI step.
+requires: CodeRabbit account (free tier available; paid for private repos)
+setup_command: |
+  # 1. Install the CodeRabbit GitHub app:
+  #    https://github.com/apps/coderabbitai (one-click on your repo)
+  #
+  # 2. Add `.coderabbit.yaml` at the repo root:
+  #    reviews:
+  #      auto_review: { enabled: true }
+  #      profile: chill        # or "assertive"
+  #      request_changes_workflow: true
+  #    chat:
+  #      auto_reply: true
+  #
+  # 3. Open a PR. CodeRabbit reviews it within ~60s.
+  # 4. Reply `@coderabbitai resolve` to apply suggested fixes.
+when_to_use: You want a multi-agent reviewer gating every merge — writer / critic / tester / compliance run before a human sees the PR.
 when_not_to_use: Solo prototypes — review automation overhead exceeds the work.
 tags: [coderabbit, code-review, multi-agent, ci]
 sources:

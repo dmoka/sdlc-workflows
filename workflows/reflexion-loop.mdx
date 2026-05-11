@@ -47,3 +47,27 @@ The technique works because the critic's role is *narrow* — it evaluates again
 **Use for** quality-critical work: spec drafts, security-sensitive code, content destined for users. The original Reflexion paper reported a lift of GPT-4 HumanEval pass-rate from 80% to 91%.
 
 **Avoid for** latency-critical paths. Each iteration is a model call; budgets compound fast.
+
+## Critic prompt template
+
+```text
+You are a critic. Read this draft:
+---
+{draft}
+---
+
+Score it against these criteria:
+1. {Criterion 1 — specific, falsifiable}
+2. {Criterion 2}
+3. {Criterion 3}
+
+For any criterion the draft fails, return: { "criterion": "...", "fix": "..." }
+If all pass, return "APPROVED".
+Do not score for vibes; only against the listed criteria.
+```
+
+## Rubric checklist — 3 properties of a good critic rubric
+
+1. **Specific.** "Names match repo conventions" beats "code is well-named."
+2. **Falsifiable.** A second reader applying the rubric should agree on pass/fail.
+3. **Tied to deliverable purpose.** Rubric items that don't change the deliverable's success are noise.

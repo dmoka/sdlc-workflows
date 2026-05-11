@@ -37,6 +37,8 @@ The mechanism is the simplest possible:
 while :; do cat PROMPT.md | claude -p --dangerously-skip-permissions ; done
 ```
 
+> Runs unattended with permissions skipped. Use a fresh git worktree, container, or VM — not your main filesystem.
+
 Three files do the work:
 
 - `PROMPT.md` — the only instruction the agent reads
@@ -45,8 +47,51 @@ Three files do the work:
 
 State lives on disk. The loop has no memory of prior runs; the agent rediscovers context every cycle from the files. That structure is the source of Ralph's strength (deterministic, restartable) and its limit (no awareness of code that already exists).
 
+## Starter templates
+
+Paste these into the project root before starting the loop.
+
+**`PROMPT.md`**
+
+```markdown
+Read AGENTS.md before anything.
+Pick the next unchecked item in IMPLEMENTATION_PLAN.md.
+Implement it. Run the project's tests until they pass.
+Update IMPLEMENTATION_PLAN.md to mark the item done, then stop.
+The bash loop will restart you with fresh context.
+```
+
+**`AGENTS.md`** (keep under 60 lines)
+
+```markdown
+# Project
+[One paragraph — what this project is and who it's for.]
+
+## Build & Test
+- Install: `…`
+- Run tests: `…`
+- Lint / format: `…`
+
+## Constraints
+- Do not edit: [files / directories the loop must not touch]
+- Do not regenerate: [generated code, fixtures, lockfiles]
+
+## Conventions
+- [The 3-5 in-repo idioms a new contributor would not guess]
+```
+
+**`IMPLEMENTATION_PLAN.md`**
+
+```markdown
+- [ ] Scaffold the project skeleton
+- [ ] Implement [feature 1]
+- [ ] Implement [feature 2]
+- [ ] Write tests for [feature 1, 2]
+- [ ] Polish, format, lint
+```
+
 **Use for** greenfield projects, prototypes, MVPs.
 
 **Avoid in** legacy codebases — Huntley flatly: "There's no way in heck I would use Ralph in an existing code base."
 
-Anthropic shipped an official `/ralph-loop` plugin in December 2025 that replaces the bash wrapper with a Stop-hook and a `--completion-promise` sentinel.
+Anthropic shipped an official `/ralph-loop` plugin in December 2025 that replaces the bash wrapper with a Stop-hook and a `--completion-promise` sentinel — see [anthropic-ralph-plugin](/workflows/anthropic-ralph-plugin) for the upgrade path.

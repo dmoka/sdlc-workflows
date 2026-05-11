@@ -18,7 +18,7 @@ setup_command: |
       process=Process.hierarchical,
       manager_llm="claude-sonnet-4-6",
   )
-when_to_use: Sequential — pipeline-style data flow. Hierarchical — dynamic delegation with validation.
+when_to_use: Sequential when a fixed pipeline fits (data extraction → transform → load). Hierarchical when a manager LLM should delegate dynamically (research → write → review with manager validation).
 when_not_to_use: Latency-critical paths — crew overhead is high vs raw single-agent calls.
 tags: [crewai, multi-agent, python, role-based]
 sources:

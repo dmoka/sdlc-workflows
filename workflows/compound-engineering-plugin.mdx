@@ -7,7 +7,22 @@ canonical_url: https://every.to/chain-of-thought/compound-engineering-how-every-
 upstream:
   repo: EveryInc/compound-engineering-plugin
   ref: main
-  paths: []
+  paths:
+    - README.md
+    - AGENTS.md
+    - CLAUDE.md
+setup_command: |
+  # Install the plugin (Claude Code):
+  /plugins install EveryInc/compound-engineering-plugin
+
+  # Cursor and Codex CLI users — see the plugin's per-tool install
+  # paths in `.claude-plugin/`, `.cursor-plugin/`, `.codex-plugin/`.
+
+  # Then run the loop:
+  /ce-brainstorm   "feature idea"
+  /ce-plan
+  /ce-code         # 14 parallel reviewers run during this
+  /ce-compound     # capture learnings into AGENTS.md / CLAUDE.md
 when_to_use: Long-lived product codebases where you want each iteration to lower future cost.
 when_not_to_use: Throwaway prototypes — the compound step pays off only across many iterations.
 tags: [loop, plan-act, claude-code, plugin, cursor, codex]

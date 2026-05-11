@@ -4,6 +4,16 @@ tagline: Three-phase iterative loop with an explicit five-layer validation pyram
 attribution: Cole Medin
 tier: multi-file
 canonical_url: https://github.com/coleam00/ai-transformation-workshop
+setup_command: |
+  # Pull the workshop's command pack into your project:
+  gh repo clone coleam00/ai-transformation-workshop /tmp/piv
+  mkdir -p .claude/commands
+  cp /tmp/piv/.claude/commands/piv-*.md .claude/commands/
+
+  # Inside Claude Code:
+  /piv-plan     "Build feature X"
+  /piv-implement
+  /piv-validate
 when_to_use: Default for most "build a feature" work — anything with both a spec and a checkable test surface.
 when_not_to_use: Spike work where you don't yet know the spec.
 tags: [loop, validation, pyramid, claude-code]
@@ -35,7 +45,19 @@ A three-phase loop — **Plan → Implement → Validate** — popularized by Co
 
 The Plan phase loads context (Jira ticket, codebase tree, recent git log) and produces a written plan with a validation strategy baked in *before any code*. Constraints (what the agent must not change), edge cases, and success criteria are spelled out explicitly. The Implement phase is the agent doing its thing — the user's job is to set it up and stay out of the way.
 
-The loop is iterative by design. When validation fails, the user feeds the specific failure back as a discrete fix prompt rather than re-running the full Implement phase. The workshop ships 15 reusable Claude Code commands that drop into any project.
+The loop is iterative by design. When validation fails, the user feeds the specific failure back as a discrete fix prompt rather than re-running the full Implement phase.
+
+The workshop ships 15 reusable Claude Code commands that drop into any project. The most-used:
+
+| Command | Purpose |
+|---|---|
+| `/piv-plan` | Generate the written plan from ticket + repo context |
+| `/piv-implement` | Execute the plan step by step |
+| `/piv-validate` | Run the 5-layer pyramid |
+| `/piv-fix` | Targeted fix when a validation layer fails |
+| `/piv-review` | Self-review against the original plan |
+
+(Full set: `coleam00/ai-transformation-workshop/.claude/commands/`.)
 
 **Use for** any task with both a spec and a checkable test surface. PIV is the closest thing to a default daily-driver workflow for feature work.
 

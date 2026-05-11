@@ -4,10 +4,13 @@ tagline: Full Claude Code runtime inside a GitHub Actions runner — interactive
 attribution: Anthropic
 tier: tool-specific
 canonical_url: https://docs.claude.com/en/docs/claude-code/github-actions
+requires: Anthropic API key (ANTHROPIC_API_KEY secret on the GitHub repo)
 upstream:
   repo: anthropics/claude-code-action
   ref: main
-  paths: []
+  paths:
+    - README.md
+    - action.yml
 setup_command: |
   # Quick setup inside `claude`:
   /install-github-app
