@@ -1,5 +1,5 @@
 ---
-title: Reflexion — Generator / Critic loop
+title: "Reflexion: Generator / Critic loop"
 tagline: A generator writes; a critic reviews; loop until the critic approves or the budget runs out.
 attribution: Shinn et al.
 tier: prompt
@@ -8,7 +8,7 @@ upstream:
   repo: noahshinn/reflexion
   ref: main
   paths: []
-when_to_use: Quality matters more than latency — content, specs, security-sensitive code.
+when_to_use: Quality matters more than latency, content, specs, security-sensitive code.
 when_not_to_use: Real-time UX where wall-clock time per request is the constraint.
 tags: [reflection, self-critique, two-agent, loop]
 sources:
@@ -20,7 +20,7 @@ sources:
     author: Microsoft
     url: https://microsoft.github.io/autogen/stable//user-guide/core-user-guide/design-patterns/reflection.html
     year: 2025
-  - title: Anthropic Cookbook — evaluator_optimizer.ipynb
+  - title: Anthropic Cookbook, evaluator_optimizer.ipynb
     author: Anthropic
     url: https://github.com/anthropics/anthropic-cookbook/blob/main/patterns/agents/evaluator_optimizer.ipynb
     year: 2024
@@ -46,7 +46,7 @@ for _ in range(MAX_ITERATIONS):
 return draft
 ```
 
-The technique works because the critic's role is *narrow* — it evaluates against a written rubric, not against vague preferences. That structure prevents the loop from sliding into infinite "looks good now / wait actually" oscillations.
+The technique works because the critic's role is *narrow*, it evaluates against a written rubric, not against vague preferences. That structure prevents the loop from sliding into infinite "looks good now / wait actually" oscillations.
 
 **Use for** quality-critical work: spec drafts, security-sensitive code, content destined for users. The original Reflexion paper reported a lift of GPT-4 HumanEval pass-rate from 80% to 91%.
 
@@ -61,7 +61,7 @@ You are a critic. Read this draft:
 ---
 
 Score it against these criteria:
-1. {Criterion 1 — specific, falsifiable}
+1. {Criterion 1, specific, falsifiable}
 2. {Criterion 2}
 3. {Criterion 3}
 
@@ -70,7 +70,7 @@ If all pass, return "APPROVED".
 Do not score for vibes; only against the listed criteria.
 ```
 
-## Rubric checklist — 3 properties of a good critic rubric
+## Rubric checklist, 3 properties of a good critic rubric
 
 1. **Specific.** "Names match repo conventions" beats "code is well-named."
 2. **Falsifiable.** A second reader applying the rubric should agree on pass/fail.

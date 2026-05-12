@@ -14,7 +14,7 @@ setup_command: |
   return a JSON report { file, issues:[], suggestions:[] }.
   After all reports return, synthesize a single prioritized fix list.
 when_to_use: File-by-file or concern-by-concern work where each chunk fits in a fresh context window.
-when_not_to_use: Sequential dependencies between subtasks — fan-out can't pass information sideways between siblings.
+when_not_to_use: Sequential dependencies between subtasks, fan-out can't pass information sideways between siblings.
 tags: [claude-code, subagents, fanout, multi-agent]
 sources:
   - title: Sub-agents (Claude Code docs)

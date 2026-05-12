@@ -1,6 +1,6 @@
 ---
 title: Anthropic Ralph Plugin
-tagline: Loop until the model emits a completion sentinel — runs inside a single Claude Code session.
+tagline: Loop until the model emits a completion sentinel, runs inside a single Claude Code session.
 attribution: Anthropic
 tier: tool
 canonical_url: https://github.com/anthropics/claude-code/tree/main/plugins/ralph-wiggum
@@ -14,7 +14,7 @@ setup_command: |
   # Inside Claude Code:
   /plugins install ralph-wiggum
   /ralph-loop "Your task here. Output <promise>DONE</promise> when complete." --completion-promise "DONE" --max-iterations 50
-when_to_use: Same intent as Ralph but inside a Claude Code session — no --dangerously-skip-permissions needed.
+when_to_use: Same intent as Ralph but inside a Claude Code session, no --dangerously-skip-permissions needed.
 when_not_to_use: When you need per-iteration commits for provenance.
 tags: [loop, claude-code, plugin, stop-hook]
 sources:

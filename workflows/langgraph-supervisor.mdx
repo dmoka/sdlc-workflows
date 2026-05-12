@@ -19,7 +19,7 @@ setup_command: |
       model="claude-sonnet-4-6"
   )
 when_to_use: Debuggability and routing accuracy matter more than latency. Supervisor wins routing accuracy in LangChain's own benchmark.
-when_not_to_use: Latency-critical pipelines — the supervisor becomes the bottleneck. Use LangGraph swarm instead.
+when_not_to_use: Latency-critical pipelines, the supervisor becomes the bottleneck. Use LangGraph swarm instead.
 tags: [langgraph, supervisor, multi-agent, python]
 sources:
   - title: langgraph-supervisor (LangChain reference)

@@ -1,5 +1,5 @@
 ---
-title: OpenAI Agents SDK — Handoffs
+title: "OpenAI Agents SDK: Handoffs"
 tagline: Each agent exposes transfer_to_X tools; the next response is owned by whichever agent is handed control.
 attribution: OpenAI
 tier: tool
@@ -18,10 +18,10 @@ setup_command: |
   triage = Agent(name="Triage", handoffs=[refund])
   Runner.run(triage, "I want my money back")
 when_to_use: Specialist should own the next turn, not just help in the background.
-when_not_to_use: When you need a single observable trace through one agent — handoffs split it.
+when_not_to_use: When you need a single observable trace through one agent, handoffs split it.
 tags: [openai, sdk, handoffs, multi-agent]
 sources:
-  - title: OpenAI Agents SDK — Handoffs
+  - title: OpenAI Agents SDK, Handoffs
     author: OpenAI
     url: https://openai.github.io/openai-agents-python/handoffs/
     year: 2025

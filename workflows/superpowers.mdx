@@ -1,5 +1,5 @@
 ---
-title: Superpowers — agentic skills framework
+title: "Superpowers: agentic skills framework"
 tagline: Composable skills + a methodology that makes your coding agent step back, spec, plan, TDD, and run autonomously for hours without deviating.
 attribution: Jesse Vincent
 tier: framework
@@ -13,7 +13,7 @@ upstream:
     - CLAUDE.md
     - skills/subagent-driven-development/SKILL.md
 setup_command: |
-  # Claude Code — official marketplace (recommended):
+  # Claude Code, official marketplace (recommended):
   /plugin install superpowers@claude-plugins-official
 
   # Or via Superpowers' own marketplace (for related plugins too):
@@ -23,9 +23,9 @@ setup_command: |
   # See README for per-harness install (Codex, Cursor, Factory, Gemini,
   # OpenCode, GitHub Copilot CLI). Each harness installs separately.
 
-  # Then just talk to your agent — Superpowers skills auto-trigger.
-  # Try: "I want to build X" — agent will spec, plan, TDD, then run.
-when_to_use: Real software where you want methodology, not vibes — when the agent should step back and spec, write an implementation plan, TDD the build, and dispatch sub-agents in parallel. Particularly strong for greenfield + multi-hour autonomous runs.
+  # Then just talk to your agent, Superpowers skills auto-trigger.
+  # Try: "I want to build X", agent will spec, plan, TDD, then run.
+when_to_use: Real software where you want methodology, not vibes, when the agent should step back and spec, write an implementation plan, TDD the build, and dispatch sub-agents in parallel. Particularly strong for greenfield + multi-hour autonomous runs.
 when_not_to_use: One-off scripts or quick fixes where the methodology overhead exceeds the work. Skills auto-trigger, but the install + discipline only pays back at non-trivial project size.
 tags: [skills, sdlc, tdd, subagent-driven-development, multi-harness, mit]
 sources:
@@ -46,7 +46,7 @@ related:
   workflows: [gstack, grill-prototype-rewind, tdd-red-green-refactor-skills, spec-kit-specify, compound-engineering-plugin]
 ---
 
-A complete software development methodology by Jesse Vincent built on top of composable agentic skills. The headline thesis: the moment your coding agent sees you're building something, it **doesn't jump into code** — it steps back, asks what you're really trying to do, teases out a spec in chunks short enough to digest, then writes an implementation plan clear enough for a junior engineer with no taste to follow. Only then does it start writing code, via subagent-driven-development with continuous review.
+A complete software development methodology by Jesse Vincent built on top of composable agentic skills. The headline thesis: the moment your coding agent sees you're building something, it **doesn't jump into code**, it steps back, asks what you're really trying to do, teases out a spec in chunks short enough to digest, then writes an implementation plan clear enough for a junior engineer with no taste to follow. Only then does it start writing code, via subagent-driven-development with continuous review.
 
 187k+ stars (Oct 2025 release), MIT, and shipped as plugins for the major harnesses including Anthropic's official Claude Code marketplace.
 
@@ -54,19 +54,19 @@ A complete software development methodology by Jesse Vincent built on top of com
 
 The framework ships 14 composable skills under `skills/` that auto-trigger based on what the agent is doing:
 
-- **brainstorming** — explore solution space before committing
-- **writing-plans** — implementation plans clear enough for a junior to follow
-- **executing-plans** — work the plan, don't deviate
-- **subagent-driven-development** — fan out to subagents per task; review their work
-- **test-driven-development** — red/green/refactor, YAGNI + DRY
-- **systematic-debugging** — disciplined diagnosis instead of guess-and-check
-- **verification-before-completion** — never declare done without proof
-- **requesting-code-review** / **receiving-code-review** — pair-review skills
-- **using-git-worktrees** — isolated parallel work
-- **dispatching-parallel-agents** — orchestrate concurrent sub-runs
-- **finishing-a-development-branch** — clean shipping discipline
-- **writing-skills** — meta-skill for creating new skills
-- **using-superpowers** — entry-point skill that points the agent at the rest
+- **brainstorming**, explore solution space before committing
+- **writing-plans**, implementation plans clear enough for a junior to follow
+- **executing-plans**, work the plan, don't deviate
+- **subagent-driven-development**, fan out to subagents per task; review their work
+- **test-driven-development**, red/green/refactor, YAGNI + DRY
+- **systematic-debugging**, disciplined diagnosis instead of guess-and-check
+- **verification-before-completion**, never declare done without proof
+- **requesting-code-review** / **receiving-code-review**, pair-review skills
+- **using-git-worktrees**, isolated parallel work
+- **dispatching-parallel-agents**, orchestrate concurrent sub-runs
+- **finishing-a-development-branch**, clean shipping discipline
+- **writing-skills**, meta-skill for creating new skills
+- **using-superpowers**, entry-point skill that points the agent at the rest
 
 ## Why it works
 

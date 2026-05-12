@@ -1,5 +1,5 @@
 ---
-title: PIV Loop — Plan / Implement / Validate
+title: "PIV Loop: Plan / Implement / Validate"
 tagline: Three-phase iterative loop with an explicit five-layer validation pyramid that draws an ownership line between agent and human.
 attribution: Cole Medin
 tier: framework
@@ -14,7 +14,7 @@ setup_command: |
   /piv-plan     "Build feature X"
   /piv-implement
   /piv-validate
-when_to_use: Default for most "build a feature" work — anything with both a spec and a checkable test surface.
+when_to_use: Default for most "build a feature" work, anything with both a spec and a checkable test surface.
 when_not_to_use: Spike work where you don't yet know the spec.
 tags: [loop, validation, pyramid, claude-code]
 sources:
@@ -22,7 +22,7 @@ sources:
     author: Cole Medin
     url: https://github.com/coleam00/ai-transformation-workshop
     year: 2026
-  - title: How to build an agentic coding workflow — the PIV loop explained
+  - title: How to build an agentic coding workflow, the PIV loop explained
     author: MindStudio
     url: https://www.mindstudio.ai/blog/agentic-coding-workflow-piv-loop-explained
     year: 2026
@@ -35,15 +35,15 @@ related:
   workflows: [plan-approval-gate, evaluator-optimizer-loop, tdd-red-green-refactor-skills]
 ---
 
-A three-phase loop — **Plan → Implement → Validate** — popularized by Cole Medin's *Principles of Agentic Engineering* workshop. The differentiator is the validation phase, which Medin codifies as a **five-layer pyramid** that explicitly draws an ownership line between agent and human:
+A three-phase loop, **Plan → Implement → Validate**, popularized by Cole Medin's *Principles of Agentic Engineering* workshop. The differentiator is the validation phase, which Medin codifies as a **five-layer pyramid** that explicitly draws an ownership line between agent and human:
 
-1. **Lint + types** — agent owns; iterates until clean
-2. **Unit tests** — agent owns; iterates until green
-3. **Integration / E2E (browser automation)** — agent owns; iterates
-4. **Code review** — *human* (with AI assist)
-5. **Manual testing — golden path + edges** — *human*
+1. **Lint + types**, agent owns; iterates until clean
+2. **Unit tests**, agent owns; iterates until green
+3. **Integration / E2E (browser automation)**, agent owns; iterates
+4. **Code review**, *human* (with AI assist)
+5. **Manual testing, golden path + edges**, *human*
 
-The Plan phase loads context (Jira ticket, codebase tree, recent git log) and produces a written plan with a validation strategy baked in *before any code*. Constraints (what the agent must not change), edge cases, and success criteria are spelled out explicitly. The Implement phase is the agent doing its thing — the user's job is to set it up and stay out of the way.
+The Plan phase loads context (Jira ticket, codebase tree, recent git log) and produces a written plan with a validation strategy baked in *before any code*. Constraints (what the agent must not change), edge cases, and success criteria are spelled out explicitly. The Implement phase is the agent doing its thing, the user's job is to set it up and stay out of the way.
 
 The loop is iterative by design. When validation fails, the user feeds the specific failure back as a discrete fix prompt rather than re-running the full Implement phase.
 
@@ -61,4 +61,4 @@ The workshop ships 15 reusable Claude Code commands that drop into any project. 
 
 **Use for** any task with both a spec and a checkable test surface. PIV is the closest thing to a default daily-driver workflow for feature work.
 
-**Avoid for** spike work where the spec doesn't yet exist — start with a scout pattern or a Plan & Act conversation first to nail down what you're building.
+**Avoid for** spike work where the spec doesn't yet exist, start with a scout pattern or a Plan & Act conversation first to nail down what you're building.

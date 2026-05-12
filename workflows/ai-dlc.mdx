@@ -1,10 +1,10 @@
 ---
-title: AI-DLC — adaptive workflow steering (AWS)
+title: "AI-DLC: adaptive workflow steering (AWS)"
 tagline: Inception → construction → operations phases with adaptive steering rules, quality gates, and human oversight. AWS Labs' methodology for production-grade agent-driven SDLC.
 attribution: AWS Labs
 tier: framework
 canonical_url: https://github.com/awslabs/aidlc-workflows
-requires: Any coding agent that supports steering rules — Claude Code, Amazon Q Developer, Cursor, Cline, GitHub Copilot, OpenAI Codex, Kiro.
+requires: Any coding agent that supports steering rules, Claude Code, Amazon Q Developer, Cursor, Cline, GitHub Copilot, OpenAI Codex, Kiro.
 upstream:
   repo: awslabs/aidlc-workflows
   ref: main
@@ -15,7 +15,7 @@ setup_command: |
   #    https://github.com/awslabs/aidlc-workflows/releases/latest
   #    Name pattern: ai-dlc-rules-v<release-number>.zip
   #
-  # 2. Extract — you'll get an `aidlc-rules/` folder with:
+  # 2. Extract, you'll get an `aidlc-rules/` folder with:
   #    - aws-aidlc-rules/        (core workflow rules)
   #    - aws-aidlc-rule-details/ (detailed rules referenced by the core)
   #
@@ -25,7 +25,7 @@ setup_command: |
   #
   # 4. Drive the agent through the three-phase adaptive workflow:
   #    Inception → Construction → Operations
-when_to_use: Production-grade SDLC where you want AWS-vetted steering rules and three-phase governance — inception (planning + design), construction (build + verify), operations (deploy + monitor). Strong fit for enterprise teams already in AWS-adjacent stacks.
+when_to_use: Production-grade SDLC where you want AWS-vetted steering rules and three-phase governance, inception (planning + design), construction (build + verify), operations (deploy + monitor). Strong fit for enterprise teams already in AWS-adjacent stacks.
 when_not_to_use: Hobby projects or quick scripts. The rule pack + three-phase ceremony is overhead unless you're shipping production software with compliance/audit needs.
 tags: [aws, aws-labs, sdlc, steering-rules, three-phase, governance, mit-0]
 sources:
@@ -49,15 +49,15 @@ related:
   workflows: [spec-kit-specify, gstack, superpowers, agent-skills, nwave-seven-waves]
 ---
 
-AWS Labs' formal methodology for AI-driven development. **Three-phase adaptive workflow** — inception, construction, operations — with steering rules that adapt to the work in front of the agent, quality gates between phases, and explicit human oversight checkpoints. MIT-0 licensed (one of the most permissive open-source licenses), backed by an [AWS DevOps blog post](https://aws.amazon.com/blogs/devops/ai-driven-development-life-cycle/) and a method-definition paper.
+AWS Labs' formal methodology for AI-driven development. **Three-phase adaptive workflow**, inception, construction, operations, with steering rules that adapt to the work in front of the agent, quality gates between phases, and explicit human oversight checkpoints. MIT-0 licensed (one of the most permissive open-source licenses), backed by an [AWS DevOps blog post](https://aws.amazon.com/blogs/devops/ai-driven-development-life-cycle/) and a method-definition paper.
 
 The thesis: agentic SDLC needs **adaptive steering** (rules that change with the phase you're in) rather than a fixed prompt or a single set of skills. The same agent behaves differently in inception (more questions, more spec-writing) vs. construction (more code, more verification) vs. operations (more monitoring, more remediation).
 
 ## Three phases
 
-- **Inception** — requirements + design. The agent leads with questions, spec writing, and architecture decisions. Quality gate: spec approved by a human before construction begins.
-- **Construction** — implementation + verification. The agent writes code, runs tests, runs static analysis (Bandit, Checkov, Gitleaks, Grype, Semgrep — all configured in the repo). Quality gate: tests + security scans clean before operations.
-- **Operations** — deploy + monitor + remediate. The agent handles ongoing operations: deploy through Q Developer/Kiro/your CI, watch metrics, and auto-remediate when steering rules say it's safe.
+- **Inception**, requirements + design. The agent leads with questions, spec writing, and architecture decisions. Quality gate: spec approved by a human before construction begins.
+- **Construction**, implementation + verification. The agent writes code, runs tests, runs static analysis (Bandit, Checkov, Gitleaks, Grype, Semgrep, all configured in the repo). Quality gate: tests + security scans clean before operations.
+- **Operations**, deploy + monitor + remediate. The agent handles ongoing operations: deploy through Q Developer/Kiro/your CI, watch metrics, and auto-remediate when steering rules say it's safe.
 
 Each phase has its own rule set in `aidlc-rules/`, conditionally referenced based on what the agent is doing.
 

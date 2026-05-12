@@ -37,13 +37,13 @@ The mechanism is the simplest possible:
 while :; do cat PROMPT.md | claude -p --dangerously-skip-permissions ; done
 ```
 
-> Runs unattended with permissions skipped. Use a fresh git worktree, container, or VM — not your main filesystem.
+> Runs unattended with permissions skipped. Use a fresh git worktree, container, or VM, not your main filesystem.
 
 Three files do the work:
 
-- `PROMPT.md` — the only instruction the agent reads
-- `AGENTS.md` — operational guide kept under 60 lines
-- `IMPLEMENTATION_PLAN.md` — task list the agent updates each iteration
+- `PROMPT.md`, the only instruction the agent reads
+- `AGENTS.md`, operational guide kept under 60 lines
+- `IMPLEMENTATION_PLAN.md`, task list the agent updates each iteration
 
 State lives on disk. The loop has no memory of prior runs; the agent rediscovers context every cycle from the files. That structure is the source of Ralph's strength (deterministic, restartable) and its limit (no awareness of code that already exists).
 
@@ -65,7 +65,7 @@ The bash loop will restart you with fresh context.
 
 ```markdown
 # Project
-[One paragraph — what this project is and who it's for.]
+[One paragraph, what this project is and who it's for.]
 
 ## Build & Test
 - Install: `…`
@@ -92,6 +92,6 @@ The bash loop will restart you with fresh context.
 
 **Use for** greenfield projects, prototypes, MVPs.
 
-**Avoid in** legacy codebases — Huntley flatly: "There's no way in heck I would use Ralph in an existing code base."
+**Avoid in** legacy codebases, Huntley flatly: "There's no way in heck I would use Ralph in an existing code base."
 
-Anthropic shipped an official `/ralph-loop` plugin in December 2025 that replaces the bash wrapper with a Stop-hook and a `--completion-promise` sentinel — see [anthropic-ralph-plugin](/workflows/anthropic-ralph-plugin) for the upgrade path.
+Anthropic shipped an official `/ralph-loop` plugin in December 2025 that replaces the bash wrapper with a Stop-hook and a `--completion-promise` sentinel, see [anthropic-ralph-plugin](/workflows/anthropic-ralph-plugin) for the upgrade path.

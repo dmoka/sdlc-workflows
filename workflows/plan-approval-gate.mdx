@@ -5,7 +5,7 @@ attribution: Convergent pattern
 tier: prompt
 canonical_url: https://docs.claude.com/en/docs/claude-code/agent-teams
 when_to_use: Anything non-trivial. Cheap discipline that prevents large unproductive code dumps.
-when_not_to_use: Mechanical work where the plan is obvious — formatting, renames, automated tests.
+when_not_to_use: Mechanical work where the plan is obvious, formatting, renames, automated tests.
 tags: [plan-approval, gate, plan-act, primitive]
 sources:
   - title: Agent Teams (Claude Code experimental)
@@ -33,9 +33,9 @@ First message rule: output PLAN ONLY. List scope, approach, files,
 success criteria. Do NOT write code until I reply with "APPROVED".
 ```
 
-That's it. The technique converges across multiple frameworks under different names — **Plan & Act** in Cline, **Plan mode** in Claude Code (`shift+tab`), **architect mode** in Aider, **Specify → Clarify → Plan** in Spec Kit. They all share the same beat: separate the *what* from the *how*, gate the second on a human OK.
+That's it. The technique converges across multiple frameworks under different names, **Plan & Act** in Cline, **Plan mode** in Claude Code (`shift+tab`), **architect mode** in Aider, **Specify → Clarify → Plan** in Spec Kit. They all share the same beat: separate the *what* from the *how*, gate the second on a human OK.
 
-The plan-first discipline does three things at once. It surfaces misunderstandings before they cost code. It gives you something concrete to push back on ("don't touch the auth module"). And it gives the agent something concrete to follow when it later loses thread — re-reading its own plan beats re-deriving it.
+The plan-first discipline does three things at once. It surfaces misunderstandings before they cost code. It gives you something concrete to push back on ("don't touch the auth module"). And it gives the agent something concrete to follow when it later loses thread, re-reading its own plan beats re-deriving it.
 
 **Use for** anything non-trivial. The plan step costs ~1-2 minutes of conversation and saves an order of magnitude more by preventing rework.
 

@@ -1,5 +1,5 @@
 ---
-title: Karpathy autoresearch — overnight metric-driven experimentation
+title: "Karpathy autoresearch: overnight metric-driven experimentation"
 tagline: Agent edits one file, trains for 5 minutes, keeps or reverts, repeats. ~100 experiments while you sleep.
 attribution: Andrej Karpathy
 tier: framework
@@ -58,16 +58,16 @@ A specialised evaluator-optimizer loop from Andrej Karpathy: give an AI agent a 
 
 Three files do the work:
 
-- **`prepare.py`** — fixed constants + one-time data prep + runtime utilities. The agent never touches this.
-- **`train.py`** — the full GPT model, optimizer, and training loop. The single file the agent edits. Architecture, hyperparameters, optimizer choice — everything is fair game.
-- **`program.md`** — instructions to the agent. The human's job is to iterate on *this* file, not the Python. "You are programming the `program.md` Markdown files," as Karpathy puts it. It's a lightweight skill.
+- **`prepare.py`**, fixed constants + one-time data prep + runtime utilities. The agent never touches this.
+- **`train.py`**, the full GPT model, optimizer, and training loop. The single file the agent edits. Architecture, hyperparameters, optimizer choice, everything is fair game.
+- **`program.md`**, instructions to the agent. The human's job is to iterate on *this* file, not the Python. "You are programming the `program.md` Markdown files," as Karpathy puts it. It's a lightweight skill.
 
 The design choices matter:
 
 - **Single file to modify** keeps diffs reviewable and scope manageable.
 - **Fixed 5-minute time budget** makes experiments directly comparable regardless of what the agent changed (model size, batch size, architecture). It also means autoresearch finds the most-optimal config *for your specific hardware*.
-- **One scalar metric** (`val_bpb`) — vocab-size-independent, so architectural changes are fairly compared.
-- **Self-contained** — one GPU, one file, one metric.
+- **One scalar metric** (`val_bpb`), vocab-size-independent, so architectural changes are fairly compared.
+- **Self-contained**, one GPU, one file, one metric.
 
 ## The generalisation
 
@@ -82,7 +82,7 @@ the autoresearch pattern works. Latency optimisation. Compression. Eval-suite tu
 
 ## Run it
 
-> ⚠ Runs unattended overnight with permissions skipped. Use a fresh worktree, container, or dedicated machine — not your main filesystem.
+> ⚠ Runs unattended overnight with permissions skipped. Use a fresh worktree, container, or dedicated machine, not your main filesystem.
 
 Spin up Claude Code / Codex / your agent of choice in the repo, disable permissions, then prompt:
 
@@ -91,7 +91,7 @@ Hi, have a look at program.md and let's kick off a new experiment.
 Let's do the setup first.
 ```
 
-You wake up in the morning to a log of experiments and — if `program.md` is well-tuned — a better model.
+You wake up in the morning to a log of experiments and, if `program.md` is well-tuned, a better model.
 
 **Use for** ML training search; latency / compression / efficiency search; any closed-loop optimization where the metric is unambiguous.
 
