@@ -4,6 +4,10 @@ tagline: Generator writes code; an automated evaluator (tests, lint, types) retu
 attribution: Anthropic (Building Effective Agents)
 tier: universal
 canonical_url: https://www.anthropic.com/research/building-effective-agents
+upstream:
+  repo: anthropics/anthropic-cookbook
+  ref: main
+  paths: []
 when_to_use: Anything with a machine-checkable pass/fail signal — build until green, lint until clean, perf budget met.
 when_not_to_use: Tasks without a deterministic check (open-ended prose, design decisions).
 tags: [primitive, anthropic, loop, tests-as-evaluator]
