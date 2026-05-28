@@ -28,7 +28,7 @@ setup_command: |
 when_to_use: Any task where (a) the agent can mutate a single well-scoped artifact, (b) success is measurable as one scalar, (c) iterations are independent and you have a fixed time budget. ML training is the canonical instance; the shape generalizes.
 when_not_to_use: Work without a clean scalar metric, or where iterations need to share state (refactors, multi-file features). Use Ralph or PIV there.
 tags: [karpathy, autonomous-research, ml-training, single-gpu, agentic-research, overnight-loop]
-use_cases: [building-features, spec-authoring]
+use_cases: [building-features, spec-authoring, bug-fixing]
 sources:
   - title: karpathy/autoresearch
     author: Andrej Karpathy
