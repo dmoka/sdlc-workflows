@@ -34,7 +34,7 @@ related:
   patterns: []
   antiPatterns: [confidently-wrong-ai-slop, cookie-clicker-mode-passive-supervision]
   practices: [human-in-loop-checkpoints]
-  glossary: [review-debt]
+  glossary: []
   tools: [coderabbit, greptile, sourcery, bito]
   workflows: [coderabbit-agent-mode, claude-code-github-action, plan-approval-gate]
 draft: false
@@ -56,7 +56,7 @@ Branch protection on `main`:
 
 The pattern's wedge is the **independence** of the reviewer from the author. When a human writes the diff, a different human reviews. When an agent writes the diff, a different agent (or a human, or both) reviews. The reviewer never trusts the author's assertion that the change is correct — it verifies.
 
-**Use for** any repo where agents will routinely write code. The cost is roughly one tool subscription and ~30 minutes of CI configuration; the payoff is the discharge mechanism for [review debt](/knowledge-base/glossary/review-debt).
+**Use for** any repo where agents will routinely write code. The cost is roughly one tool subscription and ~30 minutes of CI configuration; the payoff is a discharge mechanism for the review debt that piles up when agents generate code faster than humans can read it.
 
 **Avoid for** throwaway prototypes and personal exploration repos. The gate is policy infrastructure; it shouldn't apply to playgrounds.
 
