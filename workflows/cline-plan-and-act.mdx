@@ -18,6 +18,12 @@ setup_command: |
 when_to_use: Anything non-trivial. Cline's own slogan, "Planning > Prompting."
 when_not_to_use: One-line bug fixes, the toggle adds friction.
 tags: [plan-act, cline, vscode, two-mode]
+inputs:
+  - "A non-trivial task"
+  - "Cline VS Code extension installed"
+review_gate: {trust: human-only, standards: human-only, merge: human-gate, description: "Plan mode debates with the human; Act mode executes after plan-approval."}
+checkpoints: [{phase: plan-to-act, description: "Plan-mode approval before mode switch"}]
+use_cases: [building-features, spec-authoring]
 sources:
   - title: Plan & Act (Cline docs)
     author: Cline

@@ -11,6 +11,13 @@ upstream:
 when_to_use: Anything with a machine-checkable pass/fail signal, build until green, lint until clean, perf budget met.
 when_not_to_use: Tasks without a deterministic check (open-ended prose, design decisions).
 tags: [primitive, anthropic, loop, tests-as-evaluator]
+inputs:
+  - "A task with a clear quality signal (test pass/fail, lint, type-check, reviewer-rubric)"
+  - "An evaluator prompt"
+  - "An optimizer/agent prompt"
+review_gate: {trust: tool-assisted, standards: tool-assisted, merge: human-gate, description: "Evaluator approves the optimizer output before merge; human approves the final PR."}
+checkpoints: [{phase: per-iteration, description: "Evaluator runs after every optimizer attempt"}]
+use_cases: [building-features, test-generation, bug-fixing, security-remediation]
 sources:
   - title: Building Effective Agents
     author: Anthropic

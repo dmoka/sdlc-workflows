@@ -19,6 +19,13 @@ setup_command: |
 when_to_use: Complex multi-file edits where reasoning and patch-formatting are different cost / skill levels.
 when_not_to_use: Single-file simple edits where one model is enough and split-mode adds latency.
 tags: [aider, architect-editor, two-model, terminal]
+inputs:
+  - "A multi-file task"
+  - "Aider CLI installed"
+  - "Two model endpoints (architect + editor)"
+review_gate: {trust: human-only, standards: lint-typecheck, merge: human-gate, description: "Architect plan reviewed by human; editor diff goes through standard PR review."}
+checkpoints: [{phase: after-plan, description: "Human approves architect plan before editor begins"}]
+use_cases: [building-features, refactoring]
 sources:
   - title: Aider, Modes
     author: Paul Gauthier

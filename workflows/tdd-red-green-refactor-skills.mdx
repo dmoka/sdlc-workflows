@@ -12,6 +12,13 @@ upstream:
 when_to_use: Backend, libraries, anything where tests can drive design.
 when_not_to_use: UI work where visual correctness isn't expressible as a unit test.
 tags: [tdd, skills, subagents, red-green-refactor]
+inputs:
+  - "A behavior to implement or a bug to fix"
+  - "The test runner command"
+  - "The skill loaded into the agent"
+review_gate: {trust: ci-tests, standards: lint-typecheck, merge: human-gate, description: "Tests are the trust signal; human reviews the test+code pair for substance."}
+checkpoints: [{phase: red, description: "Confirm the test fails for the expected reason before proceeding"}, {phase: green, description: "Confirm the smallest change makes the test pass"}]
+use_cases: [test-generation, building-features]
 sources:
   - title: mattpocock/skills
     author: Matt Pocock

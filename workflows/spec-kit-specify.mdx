@@ -27,6 +27,13 @@ setup_command: |
 when_to_use: Multi-step features where you want spec-as-source-of-truth.
 when_not_to_use: One-line bug fixes.
 tags: [spec-driven, slash-commands, github]
+inputs:
+  - "A feature idea or behavior to specify"
+  - "The spec-kit CLI installed"
+  - "The team's spec templates"
+review_gate: {trust: human-only, standards: human-only, merge: human-gate, description: "Spec changes get human review before plan; plan gets human review before code."}
+checkpoints: [{phase: spec-drafted, description: "Human approves the spec before generating the plan"}, {phase: plan-drafted, description: "Human approves the plan before code generation begins"}]
+use_cases: [spec-authoring, building-features]
 sources:
   - title: github/spec-kit
     author: GitHub

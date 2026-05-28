@@ -28,6 +28,12 @@ setup_command: |
 when_to_use: Production-grade SDLC where you want AWS-vetted steering rules and three-phase governance, inception (planning + design), construction (build + verify), operations (deploy + monitor). Strong fit for enterprise teams already in AWS-adjacent stacks.
 when_not_to_use: Hobby projects or quick scripts. The rule pack + three-phase ceremony is overhead unless you're shipping production software with compliance/audit needs.
 tags: [aws, aws-labs, sdlc, steering-rules, three-phase, governance, mit-0]
+inputs:
+  - "A feature idea or request"
+  - "AWS Q Developer or equivalent agent platform"
+review_gate: {trust: human-only, standards: human-only, merge: human-gate, description: "Each SDLC phase (intent, plan, code, test, deploy) has a human checkpoint."}
+checkpoints: [{phase: intent, description: "Human approves the captured intent"}, {phase: plan, description: "Human approves the plan"}, {phase: pre-deploy, description: "Human approves before deploy"}]
+use_cases: [building-features, spec-authoring, release-readiness, documentation]
 sources:
   - title: awslabs/aidlc-workflows
     author: AWS Labs

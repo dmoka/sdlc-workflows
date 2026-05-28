@@ -7,6 +7,12 @@ canonical_url: https://docs.claude.com/en/docs/claude-code/agent-teams
 when_to_use: Anything non-trivial. Cheap discipline that prevents large unproductive code dumps.
 when_not_to_use: Mechanical work where the plan is obvious, formatting, renames, automated tests.
 tags: [plan-approval, gate, plan-act, primitive]
+inputs:
+  - "A non-trivial task description"
+  - "The agent's read access to relevant files"
+review_gate: {trust: human-only, standards: human-only, merge: plan-approval, description: "Human approves the plan before code is written; standard PR review applies to the resulting diff."}
+checkpoints: [{phase: after-plan, description: "Human reviews and approves the plan before execution"}]
+use_cases: [building-features, refactoring, migrations, spec-authoring, dependency-upgrades, security-remediation, documentation, release-readiness]
 sources:
   - title: Agent Teams (Claude Code experimental)
     author: Anthropic

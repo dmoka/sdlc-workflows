@@ -3,6 +3,7 @@ title: OpenAI Codex Cloud
 tagline: Multiple concurrent Codex agents in isolated git worktrees in OpenAI's cloud, internet-disabled by default, built into the ChatGPT sidebar.
 attribution: OpenAI
 tier: tool
+autonomous: true
 canonical_url: https://developers.openai.com/codex/cloud
 requires: ChatGPT Plus / Pro / Team subscription
 setup_command: |
@@ -14,6 +15,7 @@ setup_command: |
 when_to_use: Cookie-cutter tasks you can describe once and check the PR for; long parallel runs where you don't want to babysit.
 when_not_to_use: Tasks that need internet access (e.g. fetching live data), Codex Cloud is deliberately air-gapped.
 tags: [openai, codex, cloud, async, worktree]
+use_cases: [building-features, bug-fixing]
 sources:
   - title: Codex Cloud (OpenAI Developers)
     author: OpenAI

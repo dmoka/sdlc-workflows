@@ -22,6 +22,13 @@ setup_command: |
 when_to_use: You want a multi-agent reviewer gating every merge, writer / critic / tester / compliance run before a human sees the PR.
 when_not_to_use: Solo prototypes, review automation overhead exceeds the work.
 tags: [coderabbit, code-review, multi-agent, ci]
+inputs:
+  - "A PR opened against the protected branch"
+  - "The repo's .coderabbit.yaml"
+  - "The team's severity rules"
+review_gate: {trust: tool-assisted, standards: tool-assisted, merge: human-gate, description: "CodeRabbit reviews; human approves merge."}
+checkpoints: [{phase: pr-opened, description: "Automated review fires; human waits for reviewer pass"}, {phase: before-merge, description: "Human approves the merge"}]
+use_cases: [code-review]
 sources:
   - title: CodeRabbit docs
     author: CodeRabbit

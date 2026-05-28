@@ -6,9 +6,9 @@ Every `.mdx` file under `workflows/` has YAML frontmatter followed by an optiona
 
 | Field | Type | Notes |
 |---|---|---|
-| `title` | string | Title-case, e.g. `OpenAI Agents SDK — Handoffs` |
+| `title` | string | Title-case, e.g. `OpenAI Agents SDK - Handoffs` |
 | `tagline` | string | One sentence, ≤180 chars, no trailing period preferred |
-| `tier` | enum | One of: `universal`, `multi-file`, `tool-specific`, `concept` |
+| `tier` | enum | One of: `snippet`, `framework`, `tool` (see semantics below) |
 | `canonical_url` | URL | The official source for this workflow (vendor docs, blog, repo) |
 
 ## Optional fields
@@ -21,6 +21,12 @@ Every `.mdx` file under `workflows/` has YAML frontmatter followed by an optiona
 | `when_to_use` | string | One sentence: when this workflow is the right choice |
 | `when_not_to_use` | string | One sentence: when to avoid it |
 | `upstream` | object | GitHub repo info for license-gated mirroring (see below) |
+| `requires` | string | Runtime requirement (paid product, IDE extension, etc.). Surfaced in the detail-page meta block. |
+| `autonomous` | boolean | Default `false`. Set `true` for workflows that run an agent unattended. Triggers a safety banner above the setup command. |
+| `use_cases` | string[] | Slugs from the use-cases collection on the main site. Drives §4 of the use-case landing pages. Valid values: `building-features`, `code-review`, `test-generation`, `bug-fixing`, `refactoring`, `migrations`, `dependency-upgrades`, `security-remediation`, `documentation`, `release-readiness`, `spec-authoring`. |
+| `inputs` | string[] | 5-7 concrete items the agent needs as inputs (e.g., "the failing test output", "the repo's AGENTS.md"). Surfaced when a workflow is referenced from a use-case page. |
+| `review_gate` | object | The workflow's answer to The Review Gate's three questions (trust / standards / merge). See schema below. Renders a compact rubric on the detail page. |
+| `checkpoints` | object[] | Human-in-the-loop pause points. Empty array (`[]`) is a meaningful signal: no gates. See schema below. |
 | `sources` | source[] | References (see schema below) |
 | `related` | related | Cross-links into the site's knowledge base (see schema below) |
 | `draft` | boolean | Default `false`. Set `true` to hide from the site without deleting. |
@@ -81,12 +87,35 @@ Don't worry about being exhaustive. 3–6 strong links across 2–3 sections is 
 
 | Tier | Means | Typical example |
 |---|---|---|
-| `universal` | Paste into any LLM, works as-is. No setup needed. | Reflexion loop, Plan-approval gate |
-| `multi-file` | Needs files on disk (PROMPT.md, AGENTS.md, etc.) but no specific tool | Ralph Wiggum loop, PIV Loop |
-| `tool-specific` | Requires a specific CLI / IDE / SDK installed | Cline Plan & Act, OpenAI Handoffs, Cursor BG agents |
-| `concept` | Architectural idea, not a runnable recipe | Orchestrator-Workers, Venutian Antfarm |
+| `snippet` | Small paste-able pattern. No install, no scaffolding. | Reflexion loop, Plan-approval gate, Review-agent-on-every-merge |
+| `framework` | Needs scaffolding (files / skills / CLI) installed into your agent. | Ralph Wiggum loop, PIV Loop, Spec Kit |
+| `tool` | Commits to a specific tool or product (open- or closed-source). | Cline Plan & Act, OpenAI Handoffs, Cursor BG agents |
 
-When in doubt, pick `tool-specific` — it's the most common.
+When in doubt, pick `tool` — it's the most common.
+
+## `review_gate` shape
+
+Optional. When present, renders a compact rubric on the detail page showing how this workflow answers the three questions of [The Review Gate](https://agenticsdlc.dev/the-review-gate). Non-tool answers (CI, lint, human review, type-system) are first-class options — "tool-assisted" is one option among five.
+
+```yaml
+review_gate:
+  trust: tool-assisted | type-system | human-only | ci-tests | not-addressed
+  standards: lint-typecheck | tool-assisted | custom-rules | human-only | not-addressed
+  merge: auto-ci | human-gate | plan-approval | tool-assisted | not-addressed
+  description: "1-line gloss of what's gated and how"
+```
+
+## `checkpoints` shape
+
+Optional. List of human-in-the-loop pause points. Empty array (`[]`) means the workflow runs without gates.
+
+```yaml
+checkpoints:
+  - phase: before-implementation
+    description: "Human approves the plan before code is written"
+  - phase: before-merge
+    description: "Reviewer signs off after automated checks pass"
+```
 
 ## MDX body
 
@@ -106,10 +135,10 @@ When in doubt, pick `tool-specific` — it's the most common.
 
 ```yaml
 ---
-title: My Vendor — My Workflow
+title: My Vendor - My Workflow
 tagline: One-sentence pitch describing what the workflow does.
 attribution: My Vendor
-tier: tool-specific
+tier: tool
 canonical_url: https://my-vendor.com/docs/my-workflow
 setup_command: |
   npm install -g my-vendor-cli
@@ -117,11 +146,12 @@ setup_command: |
 when_to_use: When you need X under condition Y.
 when_not_to_use: When Z is true.
 tags: [my-vendor, multi-agent]
+use_cases: [building-features, bug-fixing]
 sources:
-  - title: My Vendor — official docs
+  - title: My Vendor - official docs
     url: https://my-vendor.com/docs/my-workflow
     year: 2025
 ---
 ```
 
-11 lines of frontmatter, no body. Fully valid.
+12 lines of frontmatter, no body. Fully valid.

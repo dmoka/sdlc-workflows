@@ -16,6 +16,13 @@ setup_command: |
 when_to_use: Long-lived projects with stable context that's painful to re-explain every session.
 when_not_to_use: One-off scripts or short investigations, memory-bank overhead doesn't pay back.
 tags: [cline, memory-bank, context, custom-instructions]
+inputs:
+  - "A multi-day project"
+  - "The memory-bank/ directory at repo root"
+  - "Starter markdown files"
+review_gate: {trust: human-only, standards: not-addressed, merge: not-addressed, description: "Memory-bank content is reviewed like docs; code changes still go through PR review."}
+checkpoints: [{phase: session-start, description: "Agent reads memory-bank/ before any other work"}, {phase: session-end, description: "Agent updates memory-bank/ before stopping"}]
+use_cases: [bug-fixing, building-features]
 sources:
   - title: Memory Bank (Cline docs)
     author: Cline
