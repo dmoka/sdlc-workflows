@@ -12,7 +12,7 @@ use_cases: [spec-authoring, building-features, documentation]
 inputs:
   - "A spec template (see /templates/spec-template)"
   - "A plan template that decomposes the spec into tasks (see /templates/plan-template)"
-  - "AGENTS.md instructions: edit spec, then plan, then code — never the other way"
+  - "AGENTS.md instructions: edit spec, then plan, then code, never the other way"
   - "A change-control discipline: behavior changes go through spec edits first"
 review_gate:
   trust: human-only
@@ -43,7 +43,7 @@ related:
 draft: false
 ---
 
-The discipline of treating the **spec**, not the code, as the canonical artifact. Code is a derivation. When behavior needs to change, the spec changes first; the implementation changes to match. The order of operations matters — edit the spec before the code, every time.
+The discipline of treating the **spec**, not the code, as the canonical artifact. Code is a derivation. When behavior needs to change, the spec changes first; the implementation changes to match. The order of operations matters: edit the spec before the code, every time.
 
 The shape:
 
@@ -59,14 +59,14 @@ A canonical workflow:
 
 ```text
 1. Edit (or write) `specs/features/<feature>.md`
-2. Generate a plan from the spec — agent decomposes into tasks
+2. Generate a plan from the spec; agent decomposes into tasks
 3. Human approves the plan
 4. Agent implements task-by-task, referencing the spec
 5. Tests are derived from the spec, not from intuition
 6. Code reviewer asks: "does this code match the spec?"
 ```
 
-The wedge over "just write code" is that the spec is human-readable, the spec is a single artifact you can argue about, and the spec encodes intent in a form that survives refactors. The wedge over "write a design doc that gets stale" is that the spec is *load-bearing for the implementation* — if it gets stale, the next code change forces you to refresh it.
+The wedge over "just write code" is that the spec is human-readable, the spec is a single artifact you can argue about, and the spec encodes intent in a form that survives refactors. The wedge over "write a design doc that gets stale" is that the spec is *load-bearing for the implementation*: if it gets stale, the next code change forces you to refresh it.
 
 **Use for** features with real behavior contracts (auth, billing, ingestion, anything with multiple consumers). Especially valuable for agentic workflows: the spec is the unambiguous instruction the agent reads, not the implicit-knowledge cloud a human team might tolerate.
 

@@ -5,7 +5,7 @@ attribution: Convergent pattern (Aider, Cursor, multi-agent SDKs)
 tier: snippet
 autonomous: false
 canonical_url: https://aider.chat/docs/usage/modes.html
-when_to_use: Multi-file work where the planning model and the writing model have different strengths — e.g. a strong reasoner for the plan, a fast/cheap model for the edits.
+when_to_use: Multi-file work where the planning model and the writing model have different strengths (e.g. a strong reasoner for the plan, a fast/cheap model for the edits).
 when_not_to_use: Single-file changes, mechanical refactors, anything where the plan and the edit are one step.
 tags: [multi-agent, separation-of-concerns, plan-act, architect, editor]
 use_cases: [building-features, refactoring]
@@ -38,14 +38,14 @@ related:
 draft: false
 ---
 
-The pattern splits "think" from "type." One agent (the **architect**) reads the code, debates options, produces a written plan, and stops. A second agent (the **editor**) reads the plan and applies it as edits — without re-litigating decisions.
+The pattern splits "think" from "type." One agent (the **architect**) reads the code, debates options, produces a written plan, and stops. A second agent (the **editor**) reads the plan and applies it as edits, without re-litigating decisions.
 
 The wedge is two complementary economies:
 
 - **The architect can be expensive.** It runs once, reasons hard, costs more per token, gets the high-stakes decisions right. Often a frontier model.
 - **The editor can be cheap.** It runs many times, follows a plan, doesn't need to reason globally. Often a faster/cheaper model.
 
-The handoff is a written plan a human can read. That gives you a natural [plan-approval gate](/workflows/plan-approval-gate) for free — and a way to push back specifically (*"don't touch `auth/`"*) without having to re-explain the task.
+The handoff is a written plan a human can read. That gives you a natural [plan-approval gate](/workflows/plan-approval-gate) for free, and a way to push back specifically (*"don't touch `auth/`"*) without having to re-explain the task.
 
 ```text
 ARCHITECT prompt:
@@ -54,11 +54,11 @@ ARCHITECT prompt:
 
 EDITOR prompt:
   Apply this plan as code edits. Do not change the plan. If you find
-  a problem with the plan, stop and report it — do not improvise.
+  a problem with the plan, stop and report it; do not improvise.
 ```
 
 **Use for** multi-file features, refactors, and migrations where you want the planner to use a more capable model than the editor.
 
-**Avoid for** single-file edits and mechanical work — the split adds latency without payoff. Also avoid when you want the same context to span planning and execution; the two-agent split inherently splits context too.
+**Avoid for** single-file edits and mechanical work; the split adds latency without payoff. Also avoid when you want the same context to span planning and execution; the two-agent split inherently splits context too.
 
 Tool-specific implementations: [`aider-architect-editor`](/workflows/aider-architect-editor) (the canonical CLI), Cursor's Plan/Apply mode, [`plan-approval-gate`](/workflows/plan-approval-gate) (single-agent, human as approver), [`cline-plan-and-act`](/workflows/cline-plan-and-act) (single-agent, mode toggle).

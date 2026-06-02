@@ -1,6 +1,6 @@
 ---
 title: Memory-bank pattern
-tagline: A directory of markdown files the agent reads at session start and writes to at session end — its working memory between runs.
+tagline: A directory of markdown files the agent reads at session start and writes to at session end. Working memory between runs.
 attribution: Convergent pattern (Cline Memory Bank, Beads, claude.md, AGENTS.md)
 tier: snippet
 autonomous: false
@@ -29,7 +29,7 @@ sources:
     url: https://docs.cline.bot/prompting/cline-memory-bank
     year: 2024
   - title: Beads, the external-memory pattern
-    url: https://github.com/jamiehannaford/beads
+    url: https://github.com/steveyegge/beads
     year: 2025
 related:
   patterns: [context-window-auto-compaction]
@@ -66,10 +66,10 @@ and any new open questions. Update `decisions.md` if you made an
 architectural choice.
 ```
 
-Memory-bank works because context windows aren't memory — they're scratch space. The pattern moves *durable* knowledge (decisions, conventions, in-flight tasks) into files the agent treats as authoritative on every load. Each session starts fresh but oriented.
+Memory-bank works because context windows aren't memory; they're scratch space. The pattern moves *durable* knowledge (decisions, conventions, in-flight tasks) into files the agent treats as authoritative on every load. Each session starts fresh but oriented.
 
 **Use for** multi-day projects, long features, post-incident contexts, anywhere you'd otherwise re-explain the same things at the start of every conversation.
 
-**Avoid for** quick one-shots and ephemeral exploration. Memory-bank overhead is real — files have to be maintained, and the agent has to be trusted to update them honestly.
+**Avoid for** quick one-shots and ephemeral exploration. Memory-bank overhead is real; files have to be maintained, and the agent has to be trusted to update them honestly.
 
 Tool-specific implementations: [`cline-memory-bank`](/workflows/cline-memory-bank) (Cline's named version), the Beads pattern, and any team's `docs/CONTEXT.md` + `AGENTS.md` combo doing the same job.

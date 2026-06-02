@@ -5,7 +5,7 @@ attribution: Convergent pattern (LangGraph, CrewAI, AutoGen, Claude Sub-Agents)
 tier: snippet
 autonomous: false
 canonical_url: https://www.anthropic.com/research/building-effective-agents
-when_to_use: Tasks that decompose cleanly into parallel subtasks — applying a refactor across N files, writing tests for N modules, investigating N hypotheses.
+when_to_use: Tasks that decompose cleanly into parallel subtasks (applying a refactor across N files, writing tests for N modules, investigating N hypotheses).
 when_not_to_use: Tasks where step N depends on step N-1's output; tasks where the subtasks would step on each other's files.
 tags: [parallel, multi-agent, fan-out, decomposition]
 use_cases: [building-features, test-generation, refactoring, migrations]
@@ -44,7 +44,7 @@ The decomposition pattern. A coordinator (orchestrator, supervisor, parent agent
 
 Three things make fan-out work where it works:
 
-1. **Independence.** The subtasks must not depend on each other's intermediate state. If subtask 3 needs subtask 1's output, you've serialized the work — fan-out gives you no parallelism.
+1. **Independence.** The subtasks must not depend on each other's intermediate state. If subtask 3 needs subtask 1's output, you've serialized the work; fan-out gives you no parallelism.
 2. **Isolation.** Each worker gets its own context window. They can't see each other's notes, scratch space, or partial results. The orchestrator is the only one with the global view.
 3. **Mergeability.** The subtask outputs have to be reconcilable. A refactor across N files is mergeable; debating which framework to use across N agents is not.
 

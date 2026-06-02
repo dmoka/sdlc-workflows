@@ -1,6 +1,6 @@
 ---
 title: Review-agent-on-every-merge
-tagline: Every PR passes an automated review gate before merge — independent of who wrote the code.
+tagline: Every PR passes an automated review gate before merge, independent of who wrote the code.
 attribution: Convergent pattern
 tier: snippet
 autonomous: false
@@ -34,13 +34,13 @@ related:
   patterns: []
   antiPatterns: [confidently-wrong-ai-slop, cookie-clicker-mode-passive-supervision]
   practices: [human-in-loop-checkpoints]
-  glossary: []
+  glossary: [review-debt]
   tools: [coderabbit, greptile, sourcery, bito]
   workflows: [coderabbit-agent-mode, claude-code-github-action, plan-approval-gate]
 draft: false
 ---
 
-The pattern is one line of policy: **no PR merges without passing the review gate**. The gate's three questions — *Can we trust what changed? Does it meet our standards? Is it safe to merge?* — get answered by some combination of automated review, type-check, tests, and human reading. The composition varies by team; the policy doesn't.
+The pattern is one line of policy: **no PR merges without passing the review gate**. The gate's three questions (*Can we trust what changed? Does it meet our standards? Is it safe to merge?*) get answered by some combination of automated review, type-check, tests, and human reading. The composition varies by team; the policy doesn't.
 
 The recipe is a GitHub branch-protection rule plus a webhook:
 
@@ -54,10 +54,10 @@ Branch protection on `main`:
   ☑ Require approvals (1+ human)
 ```
 
-The pattern's wedge is the **independence** of the reviewer from the author. When a human writes the diff, a different human reviews. When an agent writes the diff, a different agent (or a human, or both) reviews. The reviewer never trusts the author's assertion that the change is correct — it verifies.
+The pattern's wedge is the **independence** of the reviewer from the author. When a human writes the diff, a different human reviews. When an agent writes the diff, a different agent (or a human, or both) reviews. The reviewer never trusts the author's assertion that the change is correct. It verifies.
 
-**Use for** any repo where agents will routinely write code. The cost is roughly one tool subscription and ~30 minutes of CI configuration; the payoff is a discharge mechanism for the review debt that piles up when agents generate code faster than humans can read it.
+**Use for** any repo where agents will routinely write code. The cost is roughly one tool subscription and ~30 minutes of CI configuration; the payoff is the discharge mechanism for [review debt](/glossary/review-debt).
 
 **Avoid for** throwaway prototypes and personal exploration repos. The gate is policy infrastructure; it shouldn't apply to playgrounds.
 
-This is the universal pattern. Tool-specific implementations include [`coderabbit-agent-mode`](/workflows/coderabbit-agent-mode), [`claude-code-github-action`](/workflows/claude-code-github-action), and standalone review tools — see also [/the-review-gate](/the-review-gate) for the framework these all implement.
+This is the universal pattern. Tool-specific implementations include [`coderabbit-agent-mode`](/workflows/coderabbit-agent-mode), [`claude-code-github-action`](/workflows/claude-code-github-action), and standalone review tools. See also [/the-review-gate](/the-review-gate) for the framework these all implement.
