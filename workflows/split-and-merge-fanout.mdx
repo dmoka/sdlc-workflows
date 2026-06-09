@@ -21,7 +21,7 @@ inputs:
   - "Claude Code with parallel sub-agents"
 review_gate: {trust: tool-assisted, standards: lint-typecheck, merge: human-gate, description: "Parent agent reviews worker outputs; human reviews merged result."}
 checkpoints: [{phase: after-decomposition, description: "Parent agent verifies decomposition before dispatching"}, {phase: after-merge, description: "Merged output reviewed before PR opens"}]
-use_cases: [building-features, refactoring, migrations]
+use_cases: [building-features, refactoring, migrations, code-archaeology]
 sources:
   - title: Sub-agents (Claude Code docs)
     author: Anthropic

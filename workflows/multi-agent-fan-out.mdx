@@ -8,7 +8,7 @@ canonical_url: https://www.anthropic.com/research/building-effective-agents
 when_to_use: Tasks that decompose cleanly into parallel subtasks (applying a refactor across N files, writing tests for N modules, investigating N hypotheses).
 when_not_to_use: Tasks where step N depends on step N-1's output; tasks where the subtasks would step on each other's files.
 tags: [parallel, multi-agent, fan-out, decomposition]
-use_cases: [building-features, test-generation, refactoring, migrations]
+use_cases: [building-features, test-generation, refactoring, migrations, code-archaeology]
 inputs:
   - "A parent task that decomposes into independent subtasks"
   - "An orchestrator/supervisor prompt that does the decomposition"
