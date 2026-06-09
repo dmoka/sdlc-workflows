@@ -155,3 +155,19 @@ sources:
 ```
 
 12 lines of frontmatter, no body. Fully valid.
+
+## `loop` (optional)
+
+Present when the workflow is a **loop** — it iterates against a feedback gate
+until an exit condition. Its presence marks the workflow as a loop (badge +
+catalog filter) and its fields render a generated loop diagram.
+
+```yaml
+loop:
+  trigger: "What starts the loop"
+  steps:                      # the loop body, top to bottom
+    - "Act"
+  gate: "Feedback gate question?"
+  exit: "Exit condition / terminal"
+  back: "not done"            # optional loop-back edge label (default: "not done")
+```

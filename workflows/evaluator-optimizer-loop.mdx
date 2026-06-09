@@ -33,6 +33,14 @@ related:
   practices: [verify-everything, graders-resistant-to-hacking]
   glossary: [agentic-loop]
   workflows: [reflexion-loop, tdd-red-green-refactor-skills, ralph-wiggum-loop]
+loop:
+  trigger: "Task"
+  steps:
+    - "Generator writes code"
+    - "Evaluator runs tests, lint, types"
+  gate: "All green?"
+  exit: "Ship"
+  back: "failures"
 ---
 
 The simplest workflow primitive that actually closes a loop. An **optimizer** writes code against a spec; an **evaluator** runs an automated check (tests, type-checker, lint, perf budget) and returns specific failures; the optimizer revises. Repeat until green or until the iteration budget runs out.

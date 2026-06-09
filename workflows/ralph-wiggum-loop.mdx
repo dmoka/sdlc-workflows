@@ -29,6 +29,13 @@ related:
   glossary: [ralph-wiggum-loop, agentic-loop, yolo-mode]
   tools: [claude-code, amp, aider]
   workflows: [anthropic-ralph-plugin, jr-structured-ralph, antfarm]
+loop:
+  trigger: "PROMPT.md"
+  steps:
+    - "Read PROMPT.md"
+    - "Make changes"
+  gate: "Project shipped?"
+  exit: "Ship"
 ---
 
 A coding agent in a bash loop, fed the same `PROMPT.md` until the project builds itself. Coined by Geoffrey Huntley in July 2025 and widely adopted across Claude Code, Codex, and Amp.

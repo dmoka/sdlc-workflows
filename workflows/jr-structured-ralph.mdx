@@ -33,4 +33,11 @@ related:
   glossary: [worktree-pattern]
   tools: [claude-code]
   workflows: [ralph-wiggum-loop, antfarm, anthropic-ralph-plugin]
+loop:
+  trigger: "User story"
+  steps:
+    - "Worktree per feature"
+    - "Build + reviewer subagents"
+  gate: "Human approves?"
+  exit: "Merge"
 ---

@@ -34,4 +34,13 @@ related:
   practices: [verify-everything, small-sample-evals-first]
   glossary: [subagent, agent-harness]
   workflows: [evaluator-optimizer-loop, piv-loop]
+loop:
+  trigger: "New behavior"
+  steps:
+    - "Red: write failing test"
+    - "Green: minimum code"
+    - "Refactor"
+  gate: "Test green?"
+  exit: "Done"
+  back: "still red"
 ---

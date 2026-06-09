@@ -31,4 +31,10 @@ related:
   glossary: [ralph-wiggum-loop, hooks, slash-command-custom-command]
   tools: [claude-code]
   workflows: [ralph-wiggum-loop, jr-structured-ralph]
+loop:
+  trigger: "Start session"
+  steps:
+    - "Work the task"
+  gate: "Completion sentinel?"
+  exit: "Done"
 ---

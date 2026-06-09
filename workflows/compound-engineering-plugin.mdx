@@ -43,6 +43,13 @@ related:
   glossary: [compounding-engineering]
   tools: [claude-code, cursor, codex-cli]
   workflows: [plan-approval-gate, piv-loop]
+loop:
+  trigger: "Feature"
+  steps:
+    - "Build feature"
+    - "Write next seed docs"
+  gate: "Done?"
+  exit: "Ship"
 ---
 
 A four-step loop, **Plan → Work → Assess → Compound**, invented at Every (the team behind Cora) and shipped as an open-source plugin for Claude Code, Cursor, and Codex. The differentiator is the final step: every iteration ends by writing docs that seed the next iteration, so the codebase gets *easier* to modify over time rather than harder.

@@ -34,6 +34,14 @@ related:
   glossary: [plan-and-execute, plan-mode]
   tools: [claude-code]
   workflows: [plan-approval-gate, evaluator-optimizer-loop, tdd-red-green-refactor-skills]
+loop:
+  trigger: "Task"
+  steps:
+    - "Plan"
+    - "Implement"
+    - "Verify (5-layer)"
+  gate: "Validation passes?"
+  exit: "Ship"
 ---
 
 A three-phase loop, **Plan → Implement → Validate**, popularized by Cole Medin's *Principles of Agentic Engineering* workshop. The differentiator is the validation phase, which Medin codifies as a **five-layer pyramid** that explicitly draws an ownership line between agent and human:

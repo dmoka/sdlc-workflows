@@ -53,6 +53,14 @@ related:
   glossary: [agentic-loop, yolo-mode]
   tools: [claude-code, codex-cli]
   workflows: [ralph-wiggum-loop, evaluator-optimizer-loop, anthropic-ralph-plugin]
+loop:
+  trigger: "Hypothesis"
+  steps:
+    - "Edit one file"
+    - "Train ~5 min"
+    - "Keep or revert"
+  gate: "~100 runs done?"
+  exit: "Stop"
 ---
 
 A specialised evaluator-optimizer loop from Andrej Karpathy: give an AI agent a small but real LLM training setup, point it at a hard scalar metric (validation bits-per-byte), and let it iterate overnight. The agent modifies the code, trains for a fixed 5-minute wall-clock budget, checks if the metric improved, keeps or discards, and repeats. ~100 experiments per overnight run.

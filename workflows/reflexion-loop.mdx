@@ -37,6 +37,14 @@ related:
   practices: [graders-resistant-to-hacking, small-sample-evals-first]
   glossary: [reflexion, agentic-loop]
   workflows: [evaluator-optimizer-loop, tdd-red-green-refactor-skills]
+loop:
+  trigger: "Task"
+  steps:
+    - "Generator writes"
+    - "Critic reviews"
+  gate: "Approved / budget left?"
+  exit: "Accept"
+  back: "revise"
 ---
 
 Two agents in a tight loop. A **generator** drafts the work; a **critic** reviews against a rubric and either approves or returns specific revisions. Productized in 2025 by AutoGen, LangGraph, and the Anthropic Cookbook after Shinn et al.'s 2023 paper.

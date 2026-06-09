@@ -32,4 +32,10 @@ related:
   practices: [custom-slash-commands]
   tools: [claude-code]
   workflows: [ralph-wiggum-loop, jr-structured-ralph]
+loop:
+  trigger: "User stories (YAML)"
+  steps:
+    - "Run Ralph loop per story"
+  gate: "Story done?"
+  exit: "Ship"
 ---

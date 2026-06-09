@@ -45,6 +45,14 @@ related:
   glossary: [slash-command-custom-command, agent-fleet-agent-cluster]
   tools: [claude-code, codex-cli, cursor]
   workflows: [gstack, grill-prototype-rewind, tdd-red-green-refactor-skills, spec-kit-specify, compound-engineering-plugin]
+loop:
+  trigger: "Task"
+  steps:
+    - "Spec"
+    - "Plan"
+    - "TDD build"
+  gate: "Spec satisfied?"
+  exit: "Done"
 ---
 
 A complete software development methodology by Jesse Vincent built on top of composable agentic skills. The headline thesis: the moment your coding agent sees you're building something, it **doesn't jump into code**, it steps back, asks what you're really trying to do, teases out a spec in chunks short enough to digest, then writes an implementation plan clear enough for a junior engineer with no taste to follow. Only then does it start writing code, via subagent-driven-development with continuous review.
