@@ -44,3 +44,9 @@ related:
   tools: [coderabbit]
   workflows: [split-and-merge-fanout]
 ---
+
+What separates agent mode from a single-pass LLM review is that suggestions are validated before you see them. The review decomposes into specialized agents: one proposes a fix, another critiques it, another applies it in a sandbox and runs the build and tests against it. Suggestions that fail their own verification get discarded instead of posted. That attacks the worst failure mode of AI review, which is confident comments that do not survive contact with the compiler.
+
+Configuration is one YAML file at the repo root. The two settings that matter most in practice are `profile` (chill vs assertive controls nitpick volume) and `request_changes_workflow`, which makes unresolved findings block the merge the way a human reviewer would.
+
+The human stays the merge gate. The pipeline's job is to make sure that by the time a person opens the PR, the obvious problems are already fixed or flagged.

@@ -33,3 +33,9 @@ related:
   tools: [cursor]
   workflows: [codex-cloud, devin, claude-code-github-action]
 ---
+
+The agent runs on a remote Ubuntu VM that Cursor provisions for you. It clones the repo through your GitHub connection, works on its own branch, and the only artifacts you ever see are the PR and a transcript. Environment setup lives in `.cursor/environment.json`: install commands, dev servers, anything the VM needs before the agent starts. Get that file right once and every future agent inherits a working machine.
+
+Triggering is the interesting part. Besides the command palette, you can launch agents from Slack or by assigning a Linear issue to Cursor, which quietly turns the issue tracker into a dispatch queue for the chores nobody volunteers for: typo sweeps, doc updates, mechanical refactors.
+
+There is no mid-run steering, so the gate is whatever CI runs on the branch. A background agent pointed at a repo with weak CI is just a slower way to write bugs.

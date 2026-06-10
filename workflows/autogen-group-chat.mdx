@@ -36,3 +36,9 @@ related:
   tools: [autogen-ag2]
   workflows: [crewai-process, langgraph-supervisor]
 ---
+
+After every message in the chat, a selector LLM reads the conversation so far plus each agent's role description and decides who speaks next. That single routing decision is the whole pattern: the team's behavior emerges from well-written role descriptions rather than a hardcoded graph. Write vague descriptions and the selector ping-pongs between two agents while the third never speaks.
+
+Group chat dates back to Microsoft's original 2023 AutoGen paper. The 0.4 rewrite (January 2025) rebuilt it on an async event-driven runtime, with `SelectorGroupChat` as the LLM-routed variant and `RoundRobinGroupChat` as the deterministic one. Termination conditions (a max message count, a keyword like TERMINATE, or a custom predicate) are what keep a debate from running forever. Forgetting one is the classic first-run mistake.
+
+Microsoft has since folded AutoGen's ideas into the Microsoft Agent Framework, so check the migration notes before building anything new on 0.4.

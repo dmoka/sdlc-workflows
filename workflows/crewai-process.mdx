@@ -37,3 +37,9 @@ related:
   tools: [crewai]
   workflows: [openai-handoffs, langgraph-supervisor, autogen-group-chat]
 ---
+
+A crew is a set of role-prompted agents plus a process that decides how tasks flow between them. `Process.sequential` is exactly what it sounds like: tasks execute in list order and each one's output lands in the next one's context. `Process.hierarchical` generates a manager agent (you supply the `manager_llm`) that decides delegation order, reviews each worker's output, and can send work back for another pass.
+
+The practical trade is debuggability versus flexibility. Sequential runs are reproducible enough to test; hierarchical runs depend on the manager's judgment, which makes the manager model the quality ceiling for the entire crew. Spend your strongest model there and use cheaper ones for the workers.
+
+The docs have promised a third consensual process for a while now. It has stayed planned since 2024, so build with the two that exist.

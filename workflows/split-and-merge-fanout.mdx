@@ -39,3 +39,9 @@ related:
   tools: [claude-code, claude-agent-sdk]
   workflows: [jr-structured-ralph]
 ---
+
+The mechanics matter: the parent issues all Task calls in a single message, which is what makes them run in parallel instead of one after another. Each subagent starts with a fresh context window, does its slice, and returns one final report. Siblings never see each other's work. Claude Code runs up to about ten concurrently and queues the rest.
+
+Fresh context per worker is the real payoff. A 40-file review in one long session degrades as the window fills; forty subagents each reviewing one file stay sharp the whole way. The cost is that the parent's merge step becomes the quality bottleneck. It has to dedupe, rank, and reconcile reports it did not watch being produced.
+
+Two disciplines keep it honest. Make workers return structured output (JSON, not prose) so the merge stays mechanical. And have the parent verify the decomposition before dispatching, because a bad split wastes every token downstream.

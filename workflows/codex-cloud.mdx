@@ -33,3 +33,9 @@ related:
   tools: [codex-cli]
   workflows: [cursor-background-agents, devin]
 ---
+
+Each task runs in its own container, preloaded with a snapshot of your repo and cut off from the internet. That air gap is the design decision everything else follows from: the agent cannot fetch live docs or call external APIs, so it leans entirely on what the repo gives it. An AGENTS.md with setup commands, test instructions, and conventions is the single most useful file you can write for it.
+
+OpenAI shipped Codex Cloud in May 2025 as a research preview inside ChatGPT. The workflow that emerged from early teams is fire-and-compare: tasks are cheap and parallel, so you dispatch the same prompt two or three times, or several variants at once, and review whichever PR came back best. "Ask" mode does the same in read-only form for codebase questions.
+
+Treat each run as disposable. The unit of review is the PR, not the session.

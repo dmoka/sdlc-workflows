@@ -41,3 +41,7 @@ related:
   tools: [cline]
   workflows: [plan-approval-gate, aider-architect-editor, piv-loop]
 ---
+
+The toggle enforces a separation most developers skip under deadline pressure: in Plan mode Cline can read the codebase and argue with you, but it cannot edit a file. Nothing changes until you flip to Act. That makes the written plan a real approval artifact instead of a vibe, the plan-approval gate built directly into the editor.
+
+Two details make it work better in practice. Cline lets you configure a different model per mode, so teams run a strong reasoning model for Plan and a faster, cheaper one for Act; the expensive thinking happens where it pays. And the plan survives the mode switch in context, so Act executes against the agreed text instead of re-deciding architecture mid-edit, which is exactly where plan abandonment usually creeps in.
