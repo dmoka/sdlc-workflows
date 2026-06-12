@@ -14,7 +14,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
 const WORKFLOWS_DIR = path.join(ROOT, 'workflows');
 
-const TIER_VALUES = new Set(['universal', 'multi-file', 'tool-specific', 'concept']);
+const TIER_VALUES = new Set(['snippet', 'framework', 'tool']);
 const ALLOWED_RELATED_KEYS = new Set([
   'laws', 'patterns', 'antiPatterns', 'practices',
   'glossary', 'tools', 'aiAssistants', 'workflows',
